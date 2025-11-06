@@ -11,6 +11,8 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import Logo from "../ui/logo"
+import { ModeToggle } from "./Mode.Toggler"
+import { Link } from "react-router"
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
@@ -84,9 +86,10 @@ export default function Component() {
           </Popover>
           {/* Main nav */}
           <div className="flex items-center gap-6">
-            <a href="/" className="text-primary hover:text-primary/90">
-              <Logo />
-            </a>
+          <Link className="flex items-center gap-1" to={"/"}>
+           <Logo /> 
+           <h2 className="text-2xl text-gray font-semibold">Pay.Kotha</h2>
+          </Link>
             {/* Navigation menu */}
             <NavigationMenu className="max-md:hidden">
               <NavigationMenuList className="gap-2">
@@ -107,8 +110,9 @@ export default function Component() {
         </div>
         {/* Right side */}
         <div>
+          <ModeToggle/>
           <Button asChild variant="ghost" size="sm" className="text-sm">
-            <a href="#">Sign In</a>
+            <a href="/login">Sign In</a>
           </Button>
         </div>
       </div>
