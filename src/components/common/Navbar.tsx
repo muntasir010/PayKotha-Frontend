@@ -26,7 +26,7 @@ const navigationLinks = [
 export default function Component() {
   return (
     <header className="border-b px-2">
-      <div className="flex h-16 items-center justify-between gap-3">
+      <div className="flex h-10 items-center justify-between gap-3">
         {/* Left side */}
         <div className="flex items-center gap-2">
           {/* Mobile menu trigger */}
@@ -84,7 +84,7 @@ export default function Component() {
           </Popover>
           {/* Main nav */}
           <div className="flex items-center gap-6">
-            <a href="#" className="text-primary hover:text-primary/90">
+            <a href="/" className="text-primary hover:text-primary/90">
               <Logo />
             </a>
             {/* Navigation menu */}

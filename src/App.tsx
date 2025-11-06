@@ -1,10 +1,10 @@
 import './App.css'
-import { Button } from './components/ui/button'
+import HomeCarousel from './pages/home/HomeCarousel'
 
 function App() {
   return (
     <>
-      <Button>Click Me</Button>
+      <HomeCarousel/>
     </>
   )
 }
