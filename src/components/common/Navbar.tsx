@@ -16,7 +16,7 @@ import { Link } from "react-router"
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
-  { href: "/", label: "Home", active: true },
+  { href: "/", label: "Home"},
   { href: "/about", label: "About" },
   { href: "/pricing", label: "Pricing"},
   { href: "/features", label: "Features" },
@@ -72,11 +72,9 @@ export default function Component() {
                   {navigationLinks.map((link, index) => (
                     <NavigationMenuItem key={index} className="w-full">
                       <NavigationMenuLink
-                        href={link.href}
                         className="py-1.5"
-                        active={link.active}
                       >
-                        {link.label}
+                        <Link to={link.href}>{link.label}</Link>
                       </NavigationMenuLink>
                     </NavigationMenuItem>
                   ))}
@@ -88,7 +86,7 @@ export default function Component() {
           <div className="flex items-center gap-6">
           <Link className="flex items-center gap-1" to={"/"}>
            <Logo /> 
-           <h2 className="text-2xl text-gray font-semibold">Pay.Kotha</h2>
+           <h2 className="text-xl md:text-2xl text-gray font-semibold">Pay.Kotha</h2>
           </Link>
             {/* Navigation menu */}
             <NavigationMenu className="max-md:hidden">
@@ -96,11 +94,9 @@ export default function Component() {
                 {navigationLinks.map((link, index) => (
                   <NavigationMenuItem key={index}>
                     <NavigationMenuLink
-                      active={link.active}
-                      href={link.href}
                       className="py-1.5 font-medium text-muted-foreground hover:text-primary"
                     >
-                      {link.label}
+                      <Link to={link.href}>{link.label}</Link>
                     </NavigationMenuLink>
                   </NavigationMenuItem>
                 ))}
@@ -112,7 +108,7 @@ export default function Component() {
         <div>
           <ModeToggle/>
           <Button asChild variant="ghost" size="sm" className="text-sm">
-            <a href="/login">Sign In</a>
+            <Link to={"/login"}>Login</Link>
           </Button>
         </div>
       </div>
