@@ -1,25 +1,25 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { axiosInstance } from "@/lib/axios";
 import { type BaseQueryFn } from "@reduxjs/toolkit/query";
-import { AxiosError, type AxiosRequestConfig } from "axios";
-
+import { AxiosError, type AxiosRequestConfig,  } from "axios";
 const axiosBaseQuery =
   (): BaseQueryFn<
     {
       url: string;
       method?: AxiosRequestConfig["method"];
-      data?: AxiosRequestConfig["data"];
+      body?: any; 
       params?: AxiosRequestConfig["params"];
       headers?: AxiosRequestConfig["headers"];
     },
     unknown,
     unknown
   > =>
-  async ({ url, method, data, params, headers }) => {
+  async ({ url, method, body, params, headers }) => {
     try {
       const result = await axiosInstance({
-        url: url,
+        url,
         method,
-        data,
+        data: body,
         params,
         headers,
       });
@@ -34,5 +34,6 @@ const axiosBaseQuery =
       };
     }
   };
+
 
 export default axiosBaseQuery;

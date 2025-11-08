@@ -1,13 +1,15 @@
 import { baseApi } from "@/redux/baseApi";
 
-
 export const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     login: builder.mutation({
       query: (credentials) => ({
         url: "/auth/login",
         method: "POST",
-        data: credentials,
+        body: credentials,
+        headers: {
+          "Content-Type": "application/json",
+        },
       }),
       async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
         try {
@@ -30,11 +32,15 @@ export const authApi = baseApi.injectEndpoints({
       invalidatesTags: ["USER"],
     }),
 
+
     register: builder.mutation({
       query: (userInfo) => ({
-        url: "/user/register",
+        url: "/auth/register",
         method: "POST",
-        data: userInfo,
+        body: userInfo,
+        headers: {
+          "Content-Type": "application/json",
+        },
       }),
     }),
 
@@ -58,7 +64,11 @@ export const authApi = baseApi.injectEndpoints({
           const { data } = await queryFulfilled;
           // Update userInfo cache with new profile data
           dispatch(
-            authApi.util.updateQueryData("userInfo", undefined, () => data.data.user)
+            authApi.util.updateQueryData(
+              "userInfo",
+              undefined,
+              () => data.data.user
+            )
           );
         } catch (err) {
           console.error("Profile update cache failed:", err);
@@ -74,5 +84,5 @@ export const {
   useLoginMutation,
   useUserInfoQuery,
   useLogoutMutation,
-  useUpdateProfileMutation, 
+  useUpdateProfileMutation,
 } = authApi;

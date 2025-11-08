@@ -25,7 +25,7 @@ const registerSchema = z
       .string()
       .min(10, { message: "Phone number is too short" })
       .max(15, { message: "Phone number is too long" }),
-    role: z.enum(["USER", "AGENT"]), // removed required_error
+    role: z.enum(["USER", "AGENT"]),
     password: z.string().min(8, { message: "Password is too short" }),
     confirmPassword: z.string().min(8, {
       message: "Confirm Password is too short",
@@ -60,13 +60,12 @@ export function RegisterForm({
       name: data.name,
       email: data.email,
       phone: data.phone,
-      password: data.password,
       role: data.role,
+      password: data.password,
     };
-
     try {
       await register(userInfo).unwrap();
-      toast.success("User created successfully");
+      toast.success(`${data.role} created successfully`);
       navigate("/");
     } catch (error) {
       console.error(error);
@@ -94,7 +93,7 @@ export function RegisterForm({
                 <FormItem>
                   <FormLabel>Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="John Doe" {...field} />
+                    <Input placeholder="enter your email" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -134,8 +133,7 @@ export function RegisterForm({
                 </FormItem>
               )}
             />
-
-            {/* Role */}
+            {/* role */}
             <FormField
               control={form.control}
               name="role"
@@ -144,9 +142,11 @@ export function RegisterForm({
                   <FormLabel>Role</FormLabel>
                   <FormControl>
                     <select
-                      {...field}
+                      value={field.value}
+                      onChange={(e) => field.onChange(e.target.value)}
                       className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
                     >
+                      <option value="">Select Role</option>
                       <option value="USER">User</option>
                       <option value="AGENT">Agent</option>
                     </select>

@@ -1,9 +1,12 @@
-import config from "@/config/config";
+// import config from "@/config/config";
 import axios, { type AxiosRequestConfig } from "axios";
 
 export const axiosInstance = axios.create({
-  baseURL: config.baseUrl,
+  baseURL: import.meta.env.VITE_BASE_URL,
   withCredentials: true,
+   headers: {
+    "Content-Type": "application/json",
+  },
 });
 
 // Add a request interceptor
