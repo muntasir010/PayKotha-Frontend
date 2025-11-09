@@ -6,7 +6,7 @@ export const walletApi = baseApi.injectEndpoints({
     // ✅ Get Wallet
     getWallet: builder.query({
       query: () => ({
-        url: "/api/wallet",
+        url: "/wallet",
         method: "GET",
       }),
       providesTags: ["WALLET"],
@@ -15,9 +15,9 @@ export const walletApi = baseApi.injectEndpoints({
     // ✅ Add Money
     addMoney: builder.mutation({
       query: (data) => ({
-        url: "/api/wallet/add-money",
+        url: "/wallet/add-money",
         method: "POST",
-        data,
+        body:data,
       }),
       async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
         try {
@@ -43,9 +43,9 @@ export const walletApi = baseApi.injectEndpoints({
     // ✅ Withdraw
     withdraw: builder.mutation({
       query: (data) => ({
-        url: "/api/wallet/withdraw",
+        url: "/wallet/withdraw",
         method: "POST",
-        data,
+         body:data,
       }),
       async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
         try {
@@ -71,9 +71,9 @@ export const walletApi = baseApi.injectEndpoints({
     // ✅ Send Money
     sendMoney: builder.mutation({
       query: (data) => ({
-        url: "/api/wallet/send-money",
+        url: "/wallet/send-money",
         method: "POST",
-        data,
+         body:data,
       }),
       async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
         try {
@@ -99,9 +99,9 @@ export const walletApi = baseApi.injectEndpoints({
     // ✅ Agent Cash In
     cashIn: builder.mutation({
       query: (data) => ({
-        url: "/api/wallet/cash-in",
+        url: "/wallet/cash-in",
         method: "POST",
-        data,
+        body:data,
       }),
       async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
         try {
@@ -127,9 +127,9 @@ export const walletApi = baseApi.injectEndpoints({
     // ✅ Agent Cash Out
     cashOut: builder.mutation({
       query: (data) => ({
-        url: "/api/wallet/cash-out",
+        url: "/wallet/cash-out",
         method: "POST",
-        data,
+         body:data,
       }),
       async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
         try {

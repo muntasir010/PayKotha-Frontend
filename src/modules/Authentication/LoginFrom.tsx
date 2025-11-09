@@ -36,7 +36,7 @@ export function LoginForm({
 
       if (res.success) {
         toast.success("Logged in successfully");
-
+        // localStorage.setItem("token", res.data.token);
         // ✅ Force refetch user info so Navbar updates instantly
         dispatch(authApi.util.invalidateTags(["USER"]));
 
@@ -56,7 +56,6 @@ export function LoginForm({
     }
   };
 
-  // 🔥 Quick login helper
   const handleQuickLogin = async (email: string, password: string) => {
     await onSubmit({ email, password });
   };
@@ -115,28 +114,25 @@ export function LoginForm({
           </form>
         </Form>
 
-    
         <div className="flex flex-col gap-2">
           <Button
             type="button"
             variant="outline"
-            onClick={() => handleQuickLogin("oikawa@gmail.com", "Oikawa123")}
+            onClick={() => handleQuickLogin("naeem@gmail.com", "A@123456")}
           >
             Login as User
           </Button>
           <Button
             type="button"
             variant="outline"
-            onClick={() => handleQuickLogin("agent@example.com", "agent123")}
+            onClick={() => handleQuickLogin("muntasir@example.com", "A@123456")}
           >
             Login as Agent
           </Button>
           <Button
             type="button"
             variant="outline"
-            onClick={() =>
-              handleQuickLogin("admin@digitalwallet.com", "admin123")
-            }
+            onClick={() => handleQuickLogin("admin@wallet.com", "A@123456")}
           >
             Login as Admin
           </Button>

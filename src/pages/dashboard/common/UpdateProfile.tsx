@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // frontend/src/pages/ProfileUpdate.tsx
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   useUpdateProfileMutation,
   useUserInfoQuery,
@@ -18,7 +18,11 @@ const ProfileUpdate = () => {
   const [updateProfile, { isLoading }] = useUpdateProfileMutation();
   console.log(userData);
 
-  const [name, setName] = useState(userData?.data?.user?.name || "");
+  // const [name, setName] = useState(userData?.data?.user?.name || "");
+  const [name, setName] = useState("");
+  useEffect(() => {
+    if (userData?.data?.user?.name) setName(userData.data.user.name);
+  }, [userData]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

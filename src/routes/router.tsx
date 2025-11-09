@@ -10,6 +10,7 @@ import DashboardLayout from "@/layouts/DashboardLayouts";
 import { role } from "@/constants/role";
 import UserDashboard from "@/pages/dashboard/UserDashboard";
 import { generateRoutes } from "@/utils/generateRoutes";
+import { agentSidebarItems } from "./agentSidebarItems";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,13 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <UserDashboard /> },
       ...generateRoutes(userSidebarItems),
+    ],
+  },
+    {
+    Component: withAuth(DashboardLayout, role.AGENT as TRole),
+    path: "/agent",
+    children: [{ index: true, element: <UserDashboard/>},
+        ...generateRoutes(agentSidebarItems),
     ],
   },
 ]);

@@ -7,7 +7,7 @@ export const transactionApi = baseApi.injectEndpoints({
     // ✅ Get Transaction History
     getTransactionHistory: builder.query({
       query: ({ page = 1, limit = 10, type, startDate, endDate }) => {
-        let url = `/api/transactions/history?page=${page}&limit=${limit}`;
+        let url = `/transactions/history?page=${page}&limit=${limit}`;
         if (type) url += `&type=${type}`;
         if (startDate) url += `&startDate=${startDate}`;
         if (endDate) url += `&endDate=${endDate}`;
@@ -19,7 +19,7 @@ export const transactionApi = baseApi.injectEndpoints({
     // ✅ Get Commission History
     getCommissionHistory: builder.query({
       query: ({ page = 1, limit = 10 }) => ({
-        url: `/api/transactions/commission?page=${page}&limit=${limit}`,
+        url: `/transactions/commission?page=${page}&limit=${limit}`,
         method: "GET",
       }),
       providesTags: ["TRANSACTIONS"],

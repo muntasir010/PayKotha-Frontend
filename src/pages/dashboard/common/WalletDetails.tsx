@@ -21,7 +21,7 @@ const WalletDetails = () => {
     );
   }
 
-  const wallet = data?.data?.wallet;
+  const wallet = data?.data;
 
   return (
     <div className="max-w-md mx-auto shadow-md rounded-2xl p-6 mt-10">

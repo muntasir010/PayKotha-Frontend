@@ -9,7 +9,7 @@ const AddMoney = () => {
   const [amount, setAmount] = useState<number>(0);
   const [description, setDescription] = useState<string>("");
 
-  const [addMoney, { isLoading, isError, isSuccess, error }] =
+  const [addMoney, { isLoading, isError, isSuccess }] =
     useAddMoneyMutation();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -68,14 +68,16 @@ const AddMoney = () => {
 
       {/* Feedback Messages */}
       <div className="mt-4 text-center">
+
         {isSuccess && (
           <p className="text-green-600 font-medium">
             ✅ Money added successfully!
           </p>
         )}
+
         {isError && (
           <p className="text-red-600 font-medium">
-            ❌ Failed to add money: {JSON.stringify(error)}
+             "❌ Failed to add money. Try again!"
           </p>
         )}
       </div>

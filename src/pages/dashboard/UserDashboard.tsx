@@ -47,6 +47,7 @@ const UserDashboard = () => {
   const { data: walletData, isLoading } = useGetWalletQuery(undefined);
   const { data: userData, isLoading: userLoading } =
     useUserInfoQuery(undefined);
+   
   const { data: txData } = useGetTransactionHistoryQuery({
     page: 1,
     limit: 20,
@@ -117,7 +118,7 @@ const radarData = months.map((month) => {
       <Card className="col-span-2 nav-menu">
         <CardContent>
           <h3 className="text-lg font-semibold">
-            Welcome Back User Chan~ {">////<"} 👉👈
+            Welcome Back {userData?.data?.user?.name}
           </h3>
         </CardContent>
       </Card>
@@ -149,7 +150,7 @@ const radarData = months.map((month) => {
         </CardHeader>
         <CardContent>
           <p className="text-2xl font-bold">
-            ৳ {walletData?.data?.wallet?.balance}
+            ৳ {walletData?.data?.balance}
           </p>
         </CardContent>
       </Card>

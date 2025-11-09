@@ -57,7 +57,7 @@ export const authApi = baseApi.injectEndpoints({
       query: (profileData) => ({
         url: "/user/update",
         method: "PUT",
-        data: profileData,
+        body: profileData,
       }),
       async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
         try {
