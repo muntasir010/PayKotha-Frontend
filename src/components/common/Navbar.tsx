@@ -1,31 +1,55 @@
-import { Button } from "@/components/ui/button"
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-} from "@/components/ui/navigation-menu"
+} from "@/components/ui/navigation-menu";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
-import Logo from "../ui/logo"
-import { ModeToggle } from "./Mode.Toggler"
-import { Link } from "react-router"
+} from "@/components/ui/popover";
+import Logo from "../ui/logo";
+import { ModeToggle } from "./Mode.Toggler";
+import { Link } from "react-router";
+import { role } from "@/constants/role";
+import { authApi, useLogoutMutation, useUserInfoQuery } from "@/redux/features/auth/auth";
+import { useAppDispatch } from "@/redux/hook";
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
-  { href: "/", label: "Home"},
-  { href: "/about", label: "About" },
-  { href: "/pricing", label: "Pricing"},
-  { href: "/features", label: "Features" },
-  { href: "/articles", label: "Articles" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/contacts", label: "Contact" },
-]
+  { href: "/", label: "Home", role: "PUBLIC" },
+  { href: "/about", label: "About", role: "PUBLIC" },
+  { href: "/pricing", label: "Pricing", role: "PUBLIC" },
+  { href: "/contact", label: "Contact", role: "PUBLIC" },
+  { href: "/features", label: "Features", role: "PUBLIC" },
+  { href: "/articles", label: "Articles", role: "PUBLIC" },
+  { href: "/faq", label: "FAQ", role: "PUBLIC" },
+  { href: "/admin", label: "Dashboard", role: role.ADMIN },
+  { href: "/agent", label: "Dashboard", role: role.AGENT },
+  { href: "/user", label: "Dashboard", role: role.USER },
+];
 
 export default function Component() {
+  const { data } = useUserInfoQuery(undefined);
+  const [logout] = useLogoutMutation();
+  const dispatch = useAppDispatch();
+  console.log("user data:", data?.data?.user);
+
+  const handleLogout = async () => {
+    try {
+      await logout(undefined).unwrap();
+    } catch (err: any) {
+      if (err?.status !== 401) {
+        console.error("Logout failed:", err);
+      }
+    } finally {
+      dispatch(authApi.util.resetApiState());
+    }
+  };
+
   return (
     <header className="border-b px-2">
       <div className="flex h-10 items-center justify-between gap-3">
@@ -71,9 +95,7 @@ export default function Component() {
                 <NavigationMenuList className="flex-col items-start gap-0 md:gap-2">
                   {navigationLinks.map((link, index) => (
                     <NavigationMenuItem key={index} className="w-full">
-                      <NavigationMenuLink
-                        className="py-1.5"
-                      >
+                      <NavigationMenuLink className="py-1.5">
                         <Link to={link.href}>{link.label}</Link>
                       </NavigationMenuLink>
                     </NavigationMenuItem>
@@ -84,18 +106,18 @@ export default function Component() {
           </Popover>
           {/* Main nav */}
           <div className="flex items-center gap-6">
-          <Link className="flex items-center gap-1" to={"/"}>
-           <Logo /> 
-           <h2 className="text-xl md:text-2xl text-gray font-semibold">Pay.Kotha</h2>
-          </Link>
+            <Link className="flex items-center gap-1" to={"/"}>
+              <Logo />
+              <h2 className="text-xl md:text-2xl text-gray font-semibold">
+                Pay.Kotha
+              </h2>
+            </Link>
             {/* Navigation menu */}
             <NavigationMenu className="max-md:hidden">
               <NavigationMenuList className="gap-2">
                 {navigationLinks.map((link, index) => (
                   <NavigationMenuItem key={index}>
-                    <NavigationMenuLink
-                      className="py-1.5 font-medium text-muted-foreground hover:text-primary"
-                    >
+                    <NavigationMenuLink className="py-1.5 font-medium text-muted-foreground hover:text-primary">
                       <Link to={link.href}>{link.label}</Link>
                     </NavigationMenuLink>
                   </NavigationMenuItem>
@@ -105,13 +127,26 @@ export default function Component() {
           </div>
         </div>
         {/* Right side */}
-        <div>
-          <ModeToggle/>
-          <Button asChild variant="ghost" size="sm" className="text-sm">
-            <Link to={"/login"}>Login</Link>
-          </Button>
+        <div className="flex gap-2">
+          <ModeToggle />
+          <div>
+            {data?.data?.user?.email && (
+              <Button
+                onClick={handleLogout}
+                variant="outline"
+                className="text-sm cursor-pointer"
+              >
+                Logout
+              </Button>
+            )}
+            {!data?.data?.user?.email && (
+              <Button asChild className="text-sm">
+                <Link to="/login">Login</Link>
+              </Button>
+            )}
+          </div>
         </div>
       </div>
     </header>
-  )
+  );
 }
