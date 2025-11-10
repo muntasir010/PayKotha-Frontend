@@ -11,6 +11,8 @@ import { role } from "@/constants/role";
 import UserDashboard from "@/pages/dashboard/UserDashboard";
 import { generateRoutes } from "@/utils/generateRoutes";
 import { agentSidebarItems } from "./agentSidebarItems";
+import { adminSidebarItems } from "./adminSidebarItems";
+import AdminDashboard from "@/pages/dashboard/admin/AdminDashboard";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,13 @@ const router = createBrowserRouter([
         path: "/login",
         Component: Login,
       },
+    ],
+  },
+   {
+    Component: withAuth(DashboardLayout, role.ADMIN as TRole),
+    path: "/admin",
+    children: [{ index: true, element: <AdminDashboard/>},
+        ...generateRoutes(adminSidebarItems),
     ],
   },
   {

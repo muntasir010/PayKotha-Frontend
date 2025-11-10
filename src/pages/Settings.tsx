@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router";
 import { useUserInfoQuery } from "@/redux/features/auth/auth";
 import { startDashboardTour } from "./dashboard/tours/useUserDashboard";
+import { role } from "@/constants/role";
 
 const Settings = () => {
   const navigate = useNavigate();
@@ -12,8 +13,8 @@ const Settings = () => {
     const userType = userData.data.user.role; // adjust this based on your backend: "user" or "agent"
 
     // Navigate to the correct dashboard first
-    if (userType === "user") navigate("/user");
-    else if (userType === "agent") navigate("/agent");
+    if (userType === role.USER) navigate("/user");
+    else if (userType === role.AGENT) navigate("/agent");
 
     // Force start the tour
     startDashboardTour(true);
