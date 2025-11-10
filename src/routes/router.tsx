@@ -18,6 +18,7 @@ import Pricing from "@/pages/pricing/Pricing";
 import Features from "@/pages/features/Features";
 import Faq from "@/pages/faq/Faq";
 import Contacts from "@/pages/contact/Contacts";
+import { ProtectedRoute } from "./ProtectedRoutes";
 
 const router = createBrowserRouter([
   {
@@ -30,23 +31,23 @@ const router = createBrowserRouter([
       },
       {
         path: "/about",
-        Component: About
+        Component: About,
       },
       {
         path: "/pricing",
-        Component: Pricing
+        Component: Pricing,
       },
       {
         path: "/features",
-        Component: Features
+        Component: Features,
       },
       {
         path: "/faq",
-        Component: Faq
+        Component: Faq,
       },
       {
         path: "/contact",
-        Component: Contacts
+        Component: Contacts,
       },
       {
         path: "/signup",
@@ -62,7 +63,14 @@ const router = createBrowserRouter([
     Component: withAuth(DashboardLayout, role.ADMIN as TRole),
     path: "/admin",
     children: [
-      { index: true, element: <AdminDashboard /> },
+      {
+        index: true,
+        element: (
+          <ProtectedRoute>
+            <AdminDashboard />
+          </ProtectedRoute>
+        ),
+      },
       ...generateRoutes(adminSidebarItems),
     ],
   },
@@ -70,7 +78,14 @@ const router = createBrowserRouter([
     Component: withAuth(DashboardLayout, role.USER as TRole),
     path: "/user",
     children: [
-      { index: true, element: <UserDashboard /> },
+      {
+        index: true,
+        element: (
+          <ProtectedRoute>
+            <UserDashboard />{" "}
+          </ProtectedRoute>
+        ),
+      },
       ...generateRoutes(userSidebarItems),
     ],
   },
@@ -78,7 +93,14 @@ const router = createBrowserRouter([
     Component: withAuth(DashboardLayout, role.AGENT as TRole),
     path: "/agent",
     children: [
-      { index: true, element: <UserDashboard /> },
+      {
+        index: true,
+        element: (
+          <ProtectedRoute>
+            <UserDashboard />
+          </ProtectedRoute>
+        ),
+      },
       ...generateRoutes(agentSidebarItems),
     ],
   },

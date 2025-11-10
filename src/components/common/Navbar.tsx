@@ -15,7 +15,11 @@ import Logo from "../ui/logo";
 import { ModeToggle } from "./Mode.Toggler";
 import { Link } from "react-router";
 import { role } from "@/constants/role";
-import { authApi, useLogoutMutation, useUserInfoQuery } from "@/redux/features/auth/auth";
+import {
+  authApi,
+  useLogoutMutation,
+  useUserInfoQuery,
+} from "@/redux/features/auth/auth";
 import { useAppDispatch } from "@/redux/hook";
 
 // Navigation links array to be used in both desktop and mobile menus
@@ -27,7 +31,7 @@ const navigationLinks = [
   { href: "/features", label: "Features", role: "PUBLIC" },
   { href: "/articles", label: "Articles", role: "PUBLIC" },
   { href: "/faq", label: "FAQ", role: "PUBLIC" },
-  { href: "/admin", label: "Dashboard", role:role.ADMIN },
+  { href: "/admin", label: "Dashboard", role: role.ADMIN },
   { href: "/agent", label: "Dashboard", role: role.AGENT },
   { href: "/user", label: "Dashboard", role: role.USER },
 ];
@@ -36,7 +40,8 @@ export default function Component() {
   const { data } = useUserInfoQuery(undefined);
   const [logout] = useLogoutMutation();
   const dispatch = useAppDispatch();
-  console.log("user data:", data?.data?.user);
+
+  const userRole = data?.data?.user?.role;
 
   const handleLogout = async () => {
     try {
@@ -49,6 +54,17 @@ export default function Component() {
       dispatch(authApi.util.resetApiState());
     }
   };
+
+  const filteredLinks = navigationLinks.filter((link) => {
+    if (link.role === "PUBLIC") {
+      return true;
+    }
+
+    if (userRole && link.role === userRole) {
+      return true;
+    }
+    return false;
+  });
 
   return (
     <header className="border-b px-2">
@@ -93,7 +109,7 @@ export default function Component() {
             <PopoverContent align="start" className="w-36 p-1 md:hidden">
               <NavigationMenu className="max-w-none *:w-full">
                 <NavigationMenuList className="flex-col items-start gap-0 md:gap-2">
-                  {navigationLinks.map((link, index) => (
+                  {filteredLinks.map((link, index) => (
                     <NavigationMenuItem key={index} className="w-full">
                       <NavigationMenuLink className="py-1.5">
                         <Link to={link.href}>{link.label}</Link>
@@ -115,7 +131,7 @@ export default function Component() {
             {/* Navigation menu */}
             <NavigationMenu className="max-md:hidden">
               <NavigationMenuList className="gap-2">
-                {navigationLinks.map((link, index) => (
+                {filteredLinks.map((link, index) => (
                   <NavigationMenuItem key={index}>
                     <NavigationMenuLink className="py-1.5 font-medium text-muted-foreground hover:text-primary">
                       <Link to={link.href}>{link.label}</Link>
