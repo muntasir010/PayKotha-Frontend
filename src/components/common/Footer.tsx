@@ -1,5 +1,6 @@
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 import React from "react";
+import Logo from "../ui/logo";
 
 interface Footer7Props {
   logo?: {
@@ -56,10 +57,10 @@ const defaultSections = [
 ];
 
 const defaultSocialLinks = [
-  { icon: <Instagram className="size-5" />, href: "", label: "Instagram" },
-  { icon: <Facebook className="size-5" />, href: "", label: "Facebook" },
-  { icon: <Twitter className="size-5" />, href: "", label: "Twitter" },
-  { icon: <Linkedin className="size-5" />, href: "", label: "LinkedIn" },
+  { icon: <Instagram className="size-5" />, href: "https://www.instagram.com/muntasir_asif_7/", label: "Instagram" },
+  { icon: <Facebook className="size-5" />, href: "https://www.facebook.com/naeem.muntasir.7", label: "Facebook" },
+  { icon: <Twitter className="size-5" />, href: "https://x.com/muntasir_n07", label: "Twitter" },
+  { icon: <Linkedin className="size-5" />, href: "https://www.linkedin.com/in/naeem-muntasir-aa7953298/?skipRedirect=true", label: "LinkedIn" },
 ];
 
 const defaultLegalLinks = [
@@ -68,12 +69,6 @@ const defaultLegalLinks = [
 ];
 
 const Footer = ({
-  logo = {
-    url: "https://www.venusiam.vercel.app",
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg",
-    alt: "logo",
-    title: "Pay.Kotha",
-  },
   sections = defaultSections,
   description = "A collection of components for your startup business or side project.",
   socialLinks = defaultSocialLinks,
@@ -87,15 +82,7 @@ const Footer = ({
           <div className="flex w-full flex-col justify-between gap-6 lg:items-start">
             {/* Logo */}
             <div className="flex items-center gap-2 lg:justify-start">
-              <a href={logo.url}>
-                <img
-                  src={logo.src}
-                  alt={logo.alt}
-                  title={logo.title}
-                  className="h-8"
-                />
-              </a>
-              <h2 className="text-xl font-semibold">{logo.title}</h2>
+              <Logo /> <h1 className="text-3xl font-bold">Pay.Kotha</h1>
             </div>
             <p className="text-muted-foreground max-w-[70%] text-sm">
               {description}
@@ -143,4 +130,4 @@ const Footer = ({
   );
 };
 
-export default Footer ;
+export default Footer;
