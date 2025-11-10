@@ -15,6 +15,7 @@ import { adminSidebarItems } from "./adminSidebarItems";
 import AdminDashboard from "@/pages/dashboard/admin/AdminDashboard";
 import About from "@/pages/about/About";
 import Pricing from "@/pages/pricing/Pricing";
+import Features from "@/pages/features/Features";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/pricing",
         Component: Pricing
+      },
+      {
+        path: "/features",
+        Component: Features
       },
       {
         path: "/signup",
