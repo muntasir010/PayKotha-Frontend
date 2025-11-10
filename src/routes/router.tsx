@@ -13,6 +13,7 @@ import { generateRoutes } from "@/utils/generateRoutes";
 import { agentSidebarItems } from "./agentSidebarItems";
 import { adminSidebarItems } from "./adminSidebarItems";
 import AdminDashboard from "@/pages/dashboard/admin/AdminDashboard";
+import About from "@/pages/about/About";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
         Component: App,
       },
       {
+        path: "/about",
+        Component: About
+      },
+      {
         path: "/signup",
         Component: Register,
       },
@@ -33,11 +38,12 @@ const router = createBrowserRouter([
       },
     ],
   },
-   {
+  {
     Component: withAuth(DashboardLayout, role.ADMIN as TRole),
     path: "/admin",
-    children: [{ index: true, element: <AdminDashboard/>},
-        ...generateRoutes(adminSidebarItems),
+    children: [
+      { index: true, element: <AdminDashboard /> },
+      ...generateRoutes(adminSidebarItems),
     ],
   },
   {
@@ -48,11 +54,12 @@ const router = createBrowserRouter([
       ...generateRoutes(userSidebarItems),
     ],
   },
-    {
+  {
     Component: withAuth(DashboardLayout, role.AGENT as TRole),
     path: "/agent",
-    children: [{ index: true, element: <UserDashboard/>},
-        ...generateRoutes(agentSidebarItems),
+    children: [
+      { index: true, element: <UserDashboard /> },
+      ...generateRoutes(agentSidebarItems),
     ],
   },
 ]);
