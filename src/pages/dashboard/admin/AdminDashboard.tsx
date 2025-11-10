@@ -58,10 +58,7 @@ const AdminDashboard = () => {
   const users = usersData?.data?.users || [];
   const wallets = walletsData?.data?.wallets || [];
   const transactions = txData?.data?.transactions || [];
-  console.log("USers", users)
-  console.log("Wallets", wallets)
-  console.log("Transactions", transactions)
-
+// const addMoney=
   const totalUsers = users.length + 1;
   const totalAgents = users.filter(
     (u: { role: string }) => u.role === role.AGENT
@@ -71,7 +68,6 @@ const AdminDashboard = () => {
     (w: { isBlocked: any }) => w.isBlocked
   ).length;
 
-  console.log(totalAgents)
   // Transactions for charts
   const txByType = transactions.reduce((acc: any, tx: any) => {
     acc[tx.type] = (acc[tx.type] || 0) + tx.amount;
@@ -94,7 +90,9 @@ const AdminDashboard = () => {
       acc.push(entry);
     }
     if (tx.type === "send_money") entry.send_money += tx.amount;
+    // if (tx.type === "add_money") entry.add_money += tx.amount;
     if (tx.type === "add_money") entry.add_money += tx.amount;
+    console.log(entry.add_money);
     if (tx.type === "withdraw") entry.withdraw += tx.amount;
     return acc;
   }, []);
