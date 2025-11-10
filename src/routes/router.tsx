@@ -17,6 +17,7 @@ import About from "@/pages/about/About";
 import Pricing from "@/pages/pricing/Pricing";
 import Features from "@/pages/features/Features";
 import Faq from "@/pages/faq/Faq";
+import Contacts from "@/pages/contact/Contacts";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "/faq",
         Component: Faq
+      },
+      {
+        path: "/contact",
+        Component: Contacts
       },
       {
         path: "/signup",

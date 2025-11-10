@@ -22,7 +22,7 @@ export const adminApi = baseApi.injectEndpoints({
         page?: number;
         limit?: number;
         search?: string;
-        status?: string; // "active" | "blocked"
+        status?: string; 
       }) => {
         const params = new URLSearchParams({
           page: String(page),
