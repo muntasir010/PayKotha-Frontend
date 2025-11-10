@@ -1,3 +1,4 @@
+import Footer from "@/components/common/Footer";
 import NavBar from "@/components/common/Navbar";
 import { Toaster } from "react-hot-toast";
 import { Outlet } from "react-router";
@@ -20,6 +21,7 @@ const RootLayout = () => {
           },
         }}
       />
+      <Footer/>
     </>
   );
 };
