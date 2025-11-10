@@ -19,6 +19,7 @@ import Features from "@/pages/features/Features";
 import Faq from "@/pages/faq/Faq";
 import Contacts from "@/pages/contact/Contacts";
 import { ProtectedRoute } from "./ProtectedRoutes";
+import { PublicRoute } from "./PublicRoutes";
 
 const router = createBrowserRouter([
   {
@@ -51,11 +52,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/signup",
-        Component: Register,
+        element: (
+          <PublicRoute>
+            <Register />
+          </PublicRoute>
+        ),
       },
       {
         path: "/login",
-        Component: Login,
+        element: (
+          <PublicRoute>
+            <Login />
+          </PublicRoute>
+        ),
       },
     ],
   },
