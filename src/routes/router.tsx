@@ -16,6 +16,7 @@ import AdminDashboard from "@/pages/dashboard/admin/AdminDashboard";
 import About from "@/pages/about/About";
 import Pricing from "@/pages/pricing/Pricing";
 import Features from "@/pages/features/Features";
+import Faq from "@/pages/faq/Faq";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/features",
         Component: Features
+      },
+      {
+        path: "/faq",
+        Component: Faq
       },
       {
         path: "/signup",
