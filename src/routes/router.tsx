@@ -20,11 +20,13 @@ import Faq from "@/pages/faq/Faq";
 import Contacts from "@/pages/contact/Contacts";
 import { ProtectedRoute } from "./ProtectedRoutes";
 import { PublicRoute } from "./PublicRoutes";
+import NotFound from "@/components/common/NotFound";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
+    errorElement: <NotFound />,
     children: [
       {
         index: true,
