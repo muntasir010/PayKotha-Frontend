@@ -15,9 +15,12 @@ export default function HomeCarousel() {
   );
 
   return (
-    <Carousel plugins={[plugin.current]} className="w-full my-8 rounded-xl relative">
+    <Carousel
+      plugins={[plugin.current]}
+      className="w-full my-8 rounded-xl relative"
+    >
       <CarouselContent>
-          <CarouselItem className="relative">
+        <CarouselItem className="relative">
           <img
             src="https://i.ibb.co.com/cShsWpnZ/side-view-adult-paying-with-card.jpg"
             alt="Slide 1"
