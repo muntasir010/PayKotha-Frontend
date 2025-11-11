@@ -11,7 +11,7 @@ import type { ISidebarItem } from "@/types";
 
 export const userSidebarItems: ISidebarItem[] = [
   {
-    title: "User Dashboard",
+    title: "My Dashboard",
     items: [
       {     
         title: "Home",

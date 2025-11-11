@@ -13,7 +13,7 @@ import type { ISidebarItem } from "@/types";
 
 export const agentSidebarItems: ISidebarItem[] = [
   {
-    title: "User Dashboard",
+    title: "Agent Workspace",
     items: [
       {
         title: "Home",
