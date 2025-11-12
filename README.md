@@ -1,73 +1,75 @@
-# React + TypeScript + Vite
+# 💳PayKotha  
+A secure, role-based, and user-friendly frontend application for a Digital Wallet System built with React.js, Redux Toolkit, and RTK Query. Supports Users, Agents, and Admins with tailored dashboards and wallet operations.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Tech Stack
+- **Frontend:** React, TypeScript, Redux Toolkit, RTK Query, Tailwind CSS
+- **Backend:** Node.js, Express, MongoDB, JWT, bcrypt (API provided separately or mocked)
+  
+## Features
+#### Public Landing
+- Home, About, Features, Contact, FAQ pages
+- Responsive design with sticky navbar and footer
+- Hero banner with CTA buttons
+- Skeleton loaders and smooth transitions
+#### Authentication
+- Registration & Login with JWT
+- Role selection: User / Agent
+- Role-based redirection
+- Persisted login state
+- Logout functionality
+#### User Dashboard
+- Wallet balance overview
+- Deposit, withdraw, and send money
+- Transaction history with pagination and filtering
+- Profile management (update name, phone, password)
+#### Agent Dashboard
+- Overview of cash-in/out summary
+- Add/withdraw money from users
+- Transaction history
+- Profile management
+#### Admin Dashboard
+- Total users, agents, transactions overview
+- Manage users & agents
+- View all transactions with search & filters
+- Profile management
+#### General
+- Role-based navigation
+- Loading indicators and global error handling
+- Form validations
+- Pagination and data visualization (cards, charts, tables)
+- Toast notifications
+- Guided tour for dashboard features
+- Responsive and accessible UI/UX
+#### Setup Instructions
+1. Clone the repository:
+  
+ git clone <frontend-repo-url>
+ cd digital-wallet-frontend
+  
+2. Install dependencies:
+ npm install
 
-Currently, two official plugins are available:
+3. Start the development server:
+ npm start
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+4. Open http://localhost:5173 in your browser.
+   
 
-## React Compiler
+#### Project Structure
+src/
+├─ components/      # Reusable UI components
+├─ pages/           # Landing & dashboard pages
+├─ redux/           # Redux store, slices, RTK queries
+├─ routes/          # React Router setup
+├─ utils/           # Helper functions
+└─ App.tsx
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+#### Demo Credentials
+- Admin: naeemtasir07@gmail.com / 12345678
+- Agent: seraagent@mail.com / sera1234
+- User: abdul@mail.com / A@123456
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+#### Deployment
+- Frontend live URL: https://paykotha.vercel.app
+- Backend live URL: https://pay-kotha-backend.vercel.app

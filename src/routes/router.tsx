@@ -53,6 +53,10 @@ const router = createBrowserRouter([
         Component: Contacts,
       },
       {
+        path: "/contact",
+        Component: Contacts,
+      },
+      {
         path: "/signup",
         element: (
           <PublicRoute>

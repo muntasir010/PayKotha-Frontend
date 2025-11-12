@@ -36,7 +36,7 @@ export function LoginForm({
 
       if (res.success) {
         toast.success("Logged in successfully");
-        // localStorage.setItem("token", res.data.token);
+        localStorage.setItem("token", res.data.token);
         // ✅ Force refetch user info so Navbar updates instantly
         dispatch(authApi.util.invalidateTags(["USER"]));
 

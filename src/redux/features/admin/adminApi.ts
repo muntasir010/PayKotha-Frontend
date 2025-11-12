@@ -158,7 +158,7 @@ export const adminApi = baseApi.injectEndpoints({
     // 🔓 Unblock a user
     unblockUser: builder.mutation({
       query: (userId: string) => ({
-        url: `/admin/user/${userId}/unblock`,
+        url: `/admin/users/${userId}/unblock`,
         method: "PATCH",
       }),
       invalidatesTags: ["USERS", "WALLET"],
