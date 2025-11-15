@@ -24,7 +24,7 @@ const WalletDetails = () => {
   const wallet = data?.data;
 
   return (
-    <div className="max-w-md mx-auto shadow-md rounded-2xl p-6 mt-10">
+    <div className="max-w-md mx-auto shadow-md rounded-2xl p-6 mt-10 w-full">
       <div className="flex justify-center text-2xl mb-4 font-bold items-center">
               <DecryptedText
               className="text-2xl mx-auto mb-4 text-center font-bold"
@@ -63,7 +63,7 @@ const WalletDetails = () => {
       )}
 
       
-      <div className="mt-6 flex gap-4 justify-between">
+      <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 justify-between">
         <Button className="px-4 btn py-2 rounded-lg shadow">
           Add Money
         </Button>

@@ -24,14 +24,32 @@ export const authApi = baseApi.injectEndpoints({
       },
     }),
 
+    // logout: builder.mutation({
+    //   query: () => ({
+    //     url: "/auth/logout",
+    //     method: "POST",
+    //   }),
+    //   invalidatesTags: ["USER"],
+    // }),
+
     logout: builder.mutation({
       query: () => ({
         url: "/auth/logout",
         method: "POST",
       }),
+      async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
+        try {
+          await queryFulfilled;
+          // ✅ Clear frontend token
+          localStorage.removeItem("token");
+          // Optionally reset any Redux slices
+          dispatch(authApi.util.resetApiState());
+        } catch (err) {
+          console.error("Logout failed:", err);
+        }
+      },
       invalidatesTags: ["USER"],
     }),
-
 
     register: builder.mutation({
       query: (userInfo) => ({
@@ -55,7 +73,7 @@ export const authApi = baseApi.injectEndpoints({
     // ✅ New: Update Profile
     updateProfile: builder.mutation({
       query: (profileData) => ({
-        url: "/user/update",
+        url: "/users/update",
         method: "PUT",
         body: profileData,
       }),

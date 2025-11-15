@@ -13,7 +13,7 @@ import DecryptedText from "@/components/ui/shadcn-io/decrypted-text";
 const Pricing = () => {
   const [isAnnually, setIsAnnually] = useState(false);
   return (
-    <section className="py-32">
+    <section className="py-10 lg:py-16">
     <div className="container">
         <div className="mx-auto flex max-w-7xl flex-col gap-6">
           <div className="text-4xl mb-4 font-bold">

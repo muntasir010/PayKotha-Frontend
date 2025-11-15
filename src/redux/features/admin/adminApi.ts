@@ -22,7 +22,7 @@ export const adminApi = baseApi.injectEndpoints({
         page?: number;
         limit?: number;
         search?: string;
-        status?: string; 
+        status?: string;
       }) => {
         const params = new URLSearchParams({
           page: String(page),
@@ -38,6 +38,7 @@ export const adminApi = baseApi.injectEndpoints({
       },
       providesTags: ["USERS"],
     }),
+
 
     // 👛 Get all wallets (with filters & search)
     getAllWallets: builder.query({
@@ -131,7 +132,7 @@ export const adminApi = baseApi.injectEndpoints({
     // ✅ Approve an agent
     approveAgent: builder.mutation({
       query: (userId: string) => ({
-        url: `/admin/agent/${userId}/approve`,
+        url: `/admin/agents/${userId}/approve`,
         method: "PATCH",
       }),
       invalidatesTags: ["USERS"],
@@ -140,7 +141,7 @@ export const adminApi = baseApi.injectEndpoints({
     // 🚫 Suspend an agent
     suspendAgent: builder.mutation({
       query: (userId: string) => ({
-        url: `/admin/agent/${userId}/suspend`,
+        url: `/admin/agents/${userId}/suspend`,
         method: "PATCH",
       }),
       invalidatesTags: ["USERS"],

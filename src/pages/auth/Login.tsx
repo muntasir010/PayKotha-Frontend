@@ -14,7 +14,7 @@ export default function Login() {
           </div>
         </div>
       </div>
-      <div className="h-2/3 lg:mt-20 lg:overflow-y-hidden hidden bg-muted lg:flex justify-center items-center">
+      <div className="h-3/4 lg:mt-20 lg:overflow-y-hidden hidden bg-muted lg:flex justify-center items-center">
         <img
           src={
             "https://i.ibb.co.com/BV57RbNS/3d-render-secure-login-password-illustration.jpg"

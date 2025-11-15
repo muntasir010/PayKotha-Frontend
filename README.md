@@ -67,7 +67,7 @@ src/
 
 #### Demo Credentials
 - Admin: naeemtasir07@gmail.com / 12345678
-- Agent: seraagent@mail.com / sera1234
+- Agent: seraagent@gmail.com / sera1234
 - User: abdul@mail.com / A@123456
 
 #### Deployment

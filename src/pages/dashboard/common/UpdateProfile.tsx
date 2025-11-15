@@ -16,9 +16,7 @@ const ProfileUpdate = () => {
   const { data: userData, isLoading: userLoading } =
     useUserInfoQuery(undefined);
   const [updateProfile, { isLoading }] = useUpdateProfileMutation();
-  console.log(userData);
-
-  // const [name, setName] = useState(userData?.data?.user?.name || "");
+  
   const [name, setName] = useState("");
   useEffect(() => {
     if (userData?.data?.user?.name) setName(userData.data.user.name);

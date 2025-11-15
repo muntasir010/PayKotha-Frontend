@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -16,11 +15,9 @@ import { ModeToggle } from "./Mode.Toggler";
 import { Link } from "react-router";
 import { role } from "@/constants/role";
 import {
-  authApi,
-  useLogoutMutation,
   useUserInfoQuery,
 } from "@/redux/features/auth/auth";
-import { useAppDispatch } from "@/redux/hook";
+import ProfileDropdown from "./ProfileDropDown";
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
@@ -36,32 +33,14 @@ const navigationLinks = [
 ];
 
 export default function Component() {
-  const { data } = useUserInfoQuery(undefined);
-  const [logout] = useLogoutMutation();
-  const dispatch = useAppDispatch();
+  const { data: userData } = useUserInfoQuery(undefined);
 
-  const userRole = data?.data?.user?.role;
+  const userRole = userData?.data?.user?.role;
 
-  const handleLogout = async () => {
-    try {
-      await logout(undefined).unwrap();
-    } catch (err: any) {
-      if (err?.status !== 401) {
-        console.error("Logout failed:", err);
-      }
-    } finally {
-      dispatch(authApi.util.resetApiState());
-    }
-  };
-
+  // ✅ Filter links based on user role
   const filteredLinks = navigationLinks.filter((link) => {
-    if (link.role === "PUBLIC") {
-      return true;
-    }
-
-    if (userRole && link.role === userRole) {
-      return true;
-    }
+    if (link.role === "PUBLIC") return true;
+    if (userRole && link.role === userRole) return true;
     return false;
   });
 
@@ -120,16 +99,16 @@ export default function Component() {
             </PopoverContent>
           </Popover>
           {/* Main nav */}
-          <div className="flex items-center gap-6">
+          <div className="flex items-center md:gap-2 lg:gap-6">
             <Link className="flex items-center gap-1" to={"/"}>
               <Logo />
               <h2 className="text-xl md:text-2xl text-gray font-semibold">
-                Pay.Kotha
+                Pay_Kotha
               </h2>
             </Link>
             {/* Navigation menu */}
             <NavigationMenu className="max-md:hidden">
-              <NavigationMenuList className="gap-2">
+              <NavigationMenuList className="md:gap-0 lg:gap-2">
                 {filteredLinks.map((link, index) => (
                   <NavigationMenuItem key={index}>
                     <NavigationMenuLink className="py-1.5 font-medium text-muted-foreground hover:text-primary">
@@ -145,20 +124,7 @@ export default function Component() {
         <div className="flex gap-2">
           <ModeToggle />
           <div>
-            {data?.data?.user?.email && (
-              <Button
-                onClick={handleLogout}
-                variant="outline"
-                className="text-sm cursor-pointer"
-              >
-                Logout
-              </Button>
-            )}
-            {!data?.data?.user?.email && (
-              <Button asChild className="text-sm">
-                <Link to="/login">Login</Link>
-              </Button>
-            )}
+            <ProfileDropdown />
           </div>
         </div>
       </div>

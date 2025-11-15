@@ -46,12 +46,14 @@ const ViewBlockedUsers = () => {
 
   if (isError)
     return (
-      <p className="text-center mt-10 text-red-600">Failed to load users</p>
+      <p className="text-center mt-10 text-red-600">
+        Failed to load users
+      </p>
     );
 
   const handleToggleBlock = async (user: any) => {
     try {
-      if (user.isActive) {
+      if (user.isActive === "ACTIVE") {
         await blockUser(user._id).unwrap();
       } else {
         await unblockUser(user._id).unwrap();
@@ -65,18 +67,18 @@ const ViewBlockedUsers = () => {
     <div
       className={`${
         location.pathname === "/admin" ? "mx-auto" : "mx-auto mt-10"
-      }`}
+      } w-full overflow-x-auto md:overflow-visible`}
     >
       {location.pathname !== "/admin" && (
         <div className="flex justify-center text-2xl mb-4 font-bold items-center">
-                <DecryptedText
-                  className="text-2xl mx-auto mb-4 text-center font-bold"
-                  text="Block / Unblock Users"
-                  animateOn="view"
-                  speed={150}
-                  revealDirection="center"
-                />
-              </div>
+          <DecryptedText
+            className="text-2xl mx-auto mb-4 text-center font-bold"
+            text="Block / Unblock Users"
+            animateOn="view"
+            speed={150}
+            revealDirection="center"
+          />
+        </div>
       )}
 
       <Table>
@@ -95,27 +97,28 @@ const ViewBlockedUsers = () => {
           {isLoading
             ? skeletonRows
             : users.map((user: any) => {
-                // Determine badge color
-                let statusColor = "bg-yellow-400/30 text-yellow-400"; // Pending by default
-                let statusText = "Pending";
+                let statusColor = "";
+                let statusText = "";
 
-                if (user.role === role.AGENT) {
-                  statusText = user.isApproved ? "Approved" : "Suspended";
-                  statusColor = user.isApproved
-                    ? "text-green-500 bg-green-600/30"
-                    : "text-primary bg-red-900/60";
+                if (user.isActive === "ACTIVE") {
+                  statusText = "Active";
+                  statusColor =
+                    "text-green-500 bg-green-600/30";
                 } else {
-                  statusText = user.isActive ? "Active" : "Blocked";
-                  statusColor = user.isActive
-                    ? "text-green-500 bg-green-600/30"
-                    : "text-red-500 bg-red-600/30";
+                  statusText = "Blocked";
+                  statusColor =
+                    "text-red-500 bg-red-600/30";
                 }
 
                 return (
                   <TableRow key={user._id}>
-                    <TableCell className="font-medium">{user.name}</TableCell>
+                    <TableCell className="font-medium">
+                      {user.name}
+                    </TableCell>
                     <TableCell>{user.email}</TableCell>
-                    <TableCell className="capitalize">{user.role}</TableCell>
+                    <TableCell className="capitalize">
+                      {user.role}
+                    </TableCell>
                     <TableCell>
                       <span
                         className={`px-2 py-1 rounded-full text-sm font-semibold ${statusColor}`}
@@ -127,15 +130,19 @@ const ViewBlockedUsers = () => {
                       {new Date(user.createdAt).toLocaleString()}
                     </TableCell>
                     <TableCell>
-                      {user.role !== "admin" && (
-                        <Button
-                          size="sm"
-                          variant={user.isActive ? "destructive" : "default"}
-                          onClick={() => handleToggleBlock(user)}
-                        >
-                          {user.isActive ? "Block" : "Unblock"}
-                        </Button>
-                      )}
+                      <Button
+                        size="sm"
+                        variant={
+                          user.isActive === "ACTIVE"
+                            ? "destructive"
+                            : "default"
+                        }
+                        onClick={() => handleToggleBlock(user)}
+                      >
+                        {user.isActive === "ACTIVE"
+                          ? "Block"
+                          : "Unblock"}
+                      </Button>
                     </TableCell>
                   </TableRow>
                 );

@@ -56,7 +56,7 @@ const CommissionHistoryTable = () => {
     <div
       className={`${
         location.pathname === "/user" ? "mx-auto" : "max-w-5xl mx-auto mt-10"
-      }`}
+      } w-full overflow-x-auto md:overflow-visible`}
     >
       {location.pathname !== "/user" && (
         <div className="flex justify-center text-2xl mb-4 font-bold items-center">

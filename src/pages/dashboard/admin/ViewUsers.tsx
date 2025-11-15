@@ -24,7 +24,6 @@ const ViewUsers = () => {
 
   const users = data?.data?.users || [];
   const pagination = data?.data?.pagination;
-  console.log(users, "Find user")
 
   // Skeleton rows
   const skeletonRows = Array.from({ length: limit }).map((_, i) => (
@@ -41,7 +40,7 @@ const ViewUsers = () => {
     return <p className="text-center mt-10 text-red-600">Failed to load users</p>;
 
   return (
-    <div className={`${location.pathname === "/admin" ? "mx-auto" : "mx-auto mt-10"}`}>
+    <div className={`${location.pathname === "/admin" ? "mx-auto" : "mx-auto mt-10"} w-full overflow-x-auto md:overflow-visible`}>
       {location.pathname !== "/admin" && (
         <div className="flex justify-center text-2xl mb-4 font-bold items-center">
                 <DecryptedText

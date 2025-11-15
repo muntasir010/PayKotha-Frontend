@@ -46,7 +46,6 @@ const ViewTransactions = () => {
     endDate,
   });
 
-  console.log(data);
 
   const transactions = data?.data?.transactions || [];
   const pagination = data?.data?.pagination;
@@ -70,7 +69,7 @@ const ViewTransactions = () => {
     );
 
   return (
-    <div className="max-w-6xl mx-auto mt-10 px-4">
+    <div className="max-w-6xl mx-auto mt-10 px-4 w-full overflow-x-auto md:overflow-visible">
       <div className="flex justify-center text-2xl mb-4 font-bold items-center">
               <DecryptedText
                 className="text-2xl mx-auto mb-4 text-center font-bold"

@@ -86,20 +86,20 @@ const About = ({
     buttonText: "Learn More",
     buttonUrl: "/security",
   },
-  companiesTitle = "Trusted by leading payment platforms",
+  companiesTitle = "",
   companies = defaultCompanies,
   achievementsTitle = "Our Growth in Numbers",
   achievementsDescription = "Pay.Kotha has rapidly grown to become a leading digital wallet solution, trusted by users globally.",
   achievements = defaultAchievements,
 }: About3Props = {}) => {
   return (
-    <section className="py-32">
+    <section className="py-10 lg:py-16">
       <div className="container">
         {/* Intro */}
         <div className="mb-14 grid gap-5 text-center md:grid-cols-2 md:text-left">
-          <div className="text-5xl text-primary font-bold">
+          <div className="text-3xl md:text-4xl lg:text-5xl text-primary font-bold">
                   <DecryptedText
-                    className="text-5xl text-primary font-bold"
+                    className="text-2xl md:text-3xl lg:text-5xl text-primary font-bold"
                     text="About Pay.Kotha"
                     animateOn="view"
                     speed={150}

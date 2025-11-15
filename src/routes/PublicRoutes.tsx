@@ -9,7 +9,6 @@ interface PublicRouteProps {
 export const PublicRoute = ({ children }: PublicRouteProps) => {
   const { data, isLoading } = useUserInfoQuery(undefined);
   const user = data?.data?.user;
-  console.log(user)
 
   if (isLoading) return null;
 

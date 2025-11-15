@@ -82,7 +82,7 @@ const TransactionHistoryTable = () => {
       )}
 
       {/* Filter UI */}
-      <div className="flex gap-2 mb-4 justify-center">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-2 mb-4 justify-center">
         <select
           value={typeFilter}
           onChange={(e) => setTypeFilter(e.target.value)}

@@ -9,7 +9,6 @@ interface ProtectedRouteProps {
 export const ProtectedRoute = ({ children, redirectTo = "/login" }: ProtectedRouteProps) => {
   const { data, isLoading } = useUserInfoQuery(undefined);
   const user = data?.data?.user;
-  console.log(user)
 
   if (isLoading) return null;
 

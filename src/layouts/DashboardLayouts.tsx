@@ -15,6 +15,7 @@ import {
   TooltipContent,
   TooltipProvider,
 } from "@/components/ui/tooltip";
+import ProfileDropdown from "@/components/common/ProfileDropDown";
 
 export default function DashboardLayout() {
   const navigate = useNavigate();
@@ -69,7 +70,7 @@ export default function DashboardLayout() {
                 <TooltipTrigger asChild>
                   <Avatar className="w-9 h-9 cursor-pointer">
                     <AvatarImage src="/path-to-avatar.jpg" alt="User Avatar" />
-                    <AvatarFallback>U</AvatarFallback>
+                    <AvatarFallback><ProfileDropdown/></AvatarFallback>
                   </Avatar>
                 </TooltipTrigger>
                 <TooltipContent side="bottom" className="text-xs">
@@ -81,7 +82,7 @@ export default function DashboardLayout() {
         </header>
 
         {/* 🔹 Main Content */}
-        <div className="flex flex-1 flex-col gap-4 p-4 bg-background/50">
+        <div className="flex flex-1 flex-col gap-4 p-0 md:p-4 bg-background/50">
           <Outlet />
         </div>
       </SidebarInset>

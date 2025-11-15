@@ -1,18 +1,17 @@
 
 import axios, { type AxiosRequestConfig } from "axios";
 
-const BASE_URL = import.meta.env.VITE_BASE_URL || "http://localhost:5000/api/v1";
+// const BASE_URL = import.meta.env.VITE_BASE_URL || "http://localhost:5000/api/v1";
 
 // Create axios instance
 export const axiosInstance = axios.create({
-  baseURL: BASE_URL,
+  baseURL: import.meta.env.VITE_BASE_URL,
   withCredentials: true, 
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-// Request interceptor: attach token from localStorage if available
 axiosInstance.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
@@ -24,7 +23,7 @@ axiosInstance.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// Pending queue for refresh token
+
 let isRefreshing = false;
 let pendingQueue: {
   resolve: (value?: unknown) => void;

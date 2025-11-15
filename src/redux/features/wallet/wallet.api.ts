@@ -126,31 +126,18 @@ export const walletApi = baseApi.injectEndpoints({
 
     // ✅ Agent Cash Out
     cashOut: builder.mutation({
-      query: (data) => ({
-        url: "/wallet/cash-out",
-        method: "POST",
-         body:data,
-      }),
-      async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
-        try {
-          const { data } = await queryFulfilled;
-          dispatch(
-            walletApi.util.updateQueryData(
-              "getWallet",
-              undefined,
-              (draft: any) => {
-                if (draft?.data?.wallet && data?.data?.wallet) {
-                  draft.data.wallet.balance = data.data.wallet.balance;
-                }
-              }
-            )
-          );
-        } catch (err) {
-          console.error("CashOut cache update failed:", err);
-        }
-      },
-      invalidatesTags: ["TRANSACTIONS"],
-    }),
+  query: ({ userId, amount, description }) => ({
+    url: "/wallet/cash-out",
+    method: "POST",
+    body: {
+      userId,      
+      amount,       
+      description: description || "",
+    },
+    credentials: "include",
+  }),
+})
+
   }),
 });
 

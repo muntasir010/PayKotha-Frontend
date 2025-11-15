@@ -57,7 +57,7 @@ const AgentsPage = () => {
   };
 
   return (
-    <div className="mx-auto mt-10">
+    <div className="mx-auto mt-10 w-full overflow-x-auto md:overflow-visible">
       <div className="flex justify-center text-2xl mb-4 font-bold items-center">
               <DecryptedText
                 className="text-2xl mx-auto mb-4 text-center font-bold"

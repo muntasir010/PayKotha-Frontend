@@ -82,7 +82,7 @@ const Footer = ({
           <div className="flex w-full flex-col justify-between gap-6 lg:items-start">
             {/* Logo */}
             <div className="flex items-center gap-2 lg:justify-start">
-              <Logo /> <h1 className="text-3xl font-bold">Pay.Kotha</h1>
+              <Logo /> <h1 className="text-3xl font-bold">Pay_Kotha</h1>
             </div>
             <p className="text-muted-foreground max-w-[70%] text-sm">
               {description}

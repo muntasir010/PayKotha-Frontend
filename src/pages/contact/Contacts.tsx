@@ -18,12 +18,12 @@ const Contacts = ({
   email = "muntasirasif324@gmail.com",
 }: Contact2Props) => {
   return (
-    <section className="py-32">
+    <section className="py-0 lg:py-16">
       <div className="">
         <div className="flex flex-col justify-between gap-10 lg:flex-row lg:gap-20">
           <div className="mx-auto flex flex-col justify-between gap-10">
             <div className="text-center lg:text-left">
-              <div className=" text-5xl mb-4 font-bold" style={{ marginTop: "4rem" }}>
+              <div className=" text-3xl md:text-4xl lg:text-5xl mb-4 font-bold" style={{ marginTop: "4rem" }}>
                       <DecryptedText
                       className="text-5xl w-full mx-auto mt-10 mb-4 font-bold"
                         text="Reach Us"

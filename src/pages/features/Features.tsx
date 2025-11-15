@@ -29,10 +29,10 @@ const features = [
 
 const Features = () => {
   return (
-    <section className="py-32">
+    <section className="py-10 lg:py-16">
       <div className="container">
         <div className="mb-24 flex flex-col items-center gap-6">
-          <div className="flex justify-center text-5xl mb-4 font-bold items-center">
+          <div className="flex justify-center text-3xl md:text-4xl lg:text-5xl mb-4 font-bold items-center">
             <DecryptedText
               className="text-5xl w-full mx-auto mb-4 text-center font-bold"
               text="Features of Our Wallet App"
