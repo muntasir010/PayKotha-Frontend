@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAddMoneyMutation } from "@/redux/features/wallet/wallet.api";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const AddMoney = () => {
   const [amount, setAmount] = useState<number>(0);
@@ -19,6 +20,7 @@ const AddMoney = () => {
       await addMoney({ amount, description }).unwrap();
       setAmount(0);
       setDescription("");
+      toast.success("Money Added Successfully")
     } catch (err) {
       console.error("Add money failed:", err);
     }

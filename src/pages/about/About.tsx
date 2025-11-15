@@ -67,18 +67,20 @@ const defaultAchievements = [
   { label: "Global Coverage", value: "10+" },
 ];
 
+
+
 const About = ({
-    description = "Pay.Kotha is a fast, secure, and reliable digital wallet platform enabling users to send, receive, and manage money effortlessly.",
+    description = "Pay_Kotha is a fast, secure, and reliable digital wallet platform enabling users to send, receive, and manage money effortlessly.",
   mainImage = {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg",
+    src: "https://i.ibb.co.com/C3MTkmkM/18228.jpg",
     alt: "Digital wallet interface",
   },
   secondaryImage = {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg",
+    src: "https://i.ibb.co.com/XZcbkrD8/06.jpg",
     alt: "Mobile app interface",
   },
   breakout = {
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg",
+    src: "https://i.ibb.co.com/8n83P6P8/69.jpg",
     alt: "Secure wallet",
     title: "Top-notch Security",
     description:
@@ -89,7 +91,7 @@ const About = ({
   companiesTitle = "",
   companies = defaultCompanies,
   achievementsTitle = "Our Growth in Numbers",
-  achievementsDescription = "Pay.Kotha has rapidly grown to become a leading digital wallet solution, trusted by users globally.",
+  achievementsDescription = "Pay_Kotha has rapidly grown to become a leading digital wallet solution, trusted by users globally.",
   achievements = defaultAchievements,
 }: About3Props = {}) => {
   return (
@@ -100,7 +102,7 @@ const About = ({
           <div className="text-3xl md:text-4xl lg:text-5xl text-primary font-bold">
                   <DecryptedText
                     className="text-2xl md:text-3xl lg:text-5xl text-primary font-bold"
-                    text="About Pay.Kotha"
+                    text="About Pay_Kotha"
                     animateOn="view"
                     speed={150}
                     revealDirection="center"

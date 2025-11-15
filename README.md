@@ -11,27 +11,33 @@ A secure, role-based, and user-friendly frontend application for a Digital Walle
 - Responsive design with sticky navbar and footer
 - Hero banner with CTA buttons
 - Skeleton loaders and smooth transitions
+  
 #### Authentication
 - Registration & Login with JWT
 - Role selection: User / Agent
 - Role-based redirection
 - Persisted login state
 - Logout functionality
+  
 #### User Dashboard
 - Wallet balance overview
 - Deposit, withdraw, and send money
 - Transaction history with pagination and filtering
 - Profile management (update name, phone, password)
+  
 #### Agent Dashboard
 - Overview of cash-in/out summary
 - Add/withdraw money from users
 - Transaction history
 - Profile management
+  
 #### Admin Dashboard
+
 - Total users, agents, transactions overview
 - Manage users & agents
 - View all transactions with search & filters
 - Profile management
+  
 #### General
 - Role-based navigation
 - Loading indicators and global error handling
@@ -40,6 +46,7 @@ A secure, role-based, and user-friendly frontend application for a Digital Walle
 - Toast notifications
 - Guided tour for dashboard features
 - Responsive and accessible UI/UX
+  
 #### Setup Instructions
 1. Clone the repository:
   
@@ -55,7 +62,7 @@ A secure, role-based, and user-friendly frontend application for a Digital Walle
 4. Open http://localhost:5173 in your browser.
    
 
-#### Project Structure
+### Project Structure
 src/
 ├─ components/      # Reusable UI components
 ├─ pages/           # Landing & dashboard pages
@@ -65,11 +72,11 @@ src/
 └─ App.tsx
 
 
-#### Demo Credentials
+### Demo Credentials
 - Admin: naeemtasir07@gmail.com / 12345678
 - Agent: seraagent@gmail.com / sera1234
 - User: abdul@mail.com / A@123456
 
-#### Deployment
+### Deployment
 - Frontend live URL: https://paykotha.vercel.app
 - Backend live URL: https://pay-kotha-backend.vercel.app

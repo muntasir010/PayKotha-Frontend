@@ -5,25 +5,25 @@ const features = [
     title: "Secure Transactions",
     description:
       "Our wallet app ensures every transaction is encrypted and safe from unauthorized access.",
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg",
+    image: "https://i.ibb.co.com/m5SpFxs5/4482405.jpg",
   },
   {
     title: "Instant Payments",
     description:
       "Send and receive money instantly with low fees and reliable processing.",
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg",
+    image: "https://i.ibb.co.com/cShsWpnZ/side-view-adult-paying-with-card.jpg",
   },
   {
     title: "Expense Tracking",
     description:
       "Easily track your spending and monitor your financial health with smart analytics.",
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg",
+    image: "https://i.ibb.co.com/WW8HzTzd/business-person-looking-finance-graphs.jpg",
   },
   {
     title: "Multi-Currency Support",
     description:
       "Manage multiple currencies seamlessly and make international payments hassle-free.",
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg",
+    image: "https://i.ibb.co.com/8Lt2w2ft/money-around-world.jpg",
   },
 ];
 
@@ -55,7 +55,7 @@ const Features = () => {
                 <img
                   src={features[0].image}
                   alt={features[0].title}
-                  className="mt-8 bg-black aspect-[1.5] h-full w-full object-cover lg:aspect-[2.4]"
+                  className="mt-8 bg-black aspect-[1.5] h-full w-full rounded-xl object-cover lg:aspect-[2.4]"
                 />
               </div>
               <div className="flex flex-col justify-between p-10 lg:w-2/5">
@@ -64,7 +64,7 @@ const Features = () => {
                 <img
                   src={features[1].image}
                   alt={features[1].title}
-                  className="mt-8 aspect-[1.45] h-full w-full object-cover"
+                  className="mt-8 aspect-[1.45] h-full w-full object-cover rounded-xl"
                 />
               </div>
             </div>
@@ -75,7 +75,7 @@ const Features = () => {
                 <img
                   src={features[2].image}
                   alt={features[2].title}
-                  className="mt-8 aspect-[1.45] h-full w-full object-cover"
+                  className="mt-8 aspect-[1.45] h-full w-full object-cover rounded-xl"
                 />
               </div>
               <div className="flex flex-col justify-between p-10 lg:w-3/5">
@@ -84,7 +84,7 @@ const Features = () => {
                 <img
                   src={features[3].image}
                   alt={features[3].title}
-                  className="mt-8 aspect-[1.5] h-full w-full object-cover lg:aspect-[2.4]"
+                  className="mt-8 aspect-[1.5] h-full w-full object-cover lg:aspect-[2.4] rounded-xl"
                 />
               </div>
             </div>
