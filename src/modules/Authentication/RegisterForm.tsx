@@ -66,7 +66,7 @@ export function RegisterForm({
     try {
       await register(userInfo).unwrap();
       toast.success(`${data.role} created successfully`);
-      navigate("/");
+      navigate("/login");
     } catch (error) {
       console.error(error);
       toast.error("Registration failed");
