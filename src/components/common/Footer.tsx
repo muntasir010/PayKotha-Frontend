@@ -76,10 +76,10 @@ const Footer = ({
   legalLinks = defaultLegalLinks,
 }: Footer7Props) => {
   return (
-    <section className="pt-32">
-      <div>
-        <div className="flex w-full flex-col justify-between gap-10 lg:flex-row lg:items-start lg:text-left">
-          <div className="flex w-full flex-col justify-between gap-6 lg:items-start">
+    <section className="p-10 md:pt-20">
+      <div className="max-w-7xl mx-auto ">
+        <div className="flex flex-col justify-between gap-10 lg:flex-row lg:items-start lg:text-left">
+          <div className="flex flex-col justify-between gap-6 lg:items-start">
             {/* Logo */}
             <div className="flex items-center gap-2 lg:justify-start">
               <Logo /> <h1 className="text-3xl font-bold">Pay_Kotha</h1>

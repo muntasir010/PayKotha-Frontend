@@ -8,10 +8,12 @@ function App() {
   return (
     <>
       <HomeCarousel />
-      <About />
-      <Features />
-      <Contacts />
-      <Faq />
+      <div className="max-w-7xl mx-auto">
+        <About />
+        <Features />
+        <Contacts />
+        <Faq />
+      </div>
     </>
   );
 }
