@@ -42,6 +42,7 @@ export default function Component() {
     if (link.role === "PUBLIC") return true;
     if (userRole && link.role === userRole) return true;
     return false;
+    
   });
 
   return (
