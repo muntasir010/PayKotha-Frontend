@@ -24,14 +24,6 @@ export const authApi = baseApi.injectEndpoints({
       },
     }),
 
-    // logout: builder.mutation({
-    //   query: () => ({
-    //     url: "/auth/logout",
-    //     method: "POST",
-    //   }),
-    //   invalidatesTags: ["USER"],
-    // }),
-
     logout: builder.mutation({
       query: () => ({
         url: "/auth/logout",
@@ -74,7 +66,7 @@ export const authApi = baseApi.injectEndpoints({
     updateProfile: builder.mutation({
       query: (profileData) => ({
         url: "/users/update",
-        method: "PUT",
+        method: "PATCH",
         body: profileData,
       }),
       async onQueryStarted(_arg, { dispatch, queryFulfilled }) {

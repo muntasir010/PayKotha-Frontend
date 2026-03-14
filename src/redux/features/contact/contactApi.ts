@@ -9,7 +9,14 @@ const contactApi = baseApi.injectEndpoints({
         body: data,
       }),
     }),
+    getAllMessages: builder.query({
+      query: () => ({
+        url: "/contact/all-messages",
+        method: "GET",
+      }),
+      providesTags: ["MESSAGES"],
+    }),
   }),
 });
 
-export const { useSendMessageMutation } = contactApi;
+export const { useSendMessageMutation, useGetAllMessagesQuery } = contactApi;

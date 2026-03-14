@@ -1,4 +1,5 @@
 import AdminDashboard from "@/pages/dashboard/admin/AdminDashboard";
+import AdminInbox from "@/pages/dashboard/admin/AdminInbox";
 import ViewBlockedUsers from "@/pages/dashboard/admin/BlockedUsers";
 import ViewBlockedWallets from "@/pages/dashboard/admin/BlockedWallets";
 import AgentsPage from "@/pages/dashboard/admin/ViewAgents";
@@ -52,6 +53,11 @@ export const adminSidebarItems: ISidebarItem[] = [
         title: "Suspended Agents",
         url: "/admin/suspended-agents",
         component: AgentsPage,
+      },
+      {
+        title: "Admin Inbox",
+        url: "/admin/inbox",
+        component: AdminInbox,
       },
     ],
   },
