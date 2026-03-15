@@ -8,8 +8,8 @@ import DecryptedText from "../../components/ui/shadcn-io/decrypted-text";
 
 const Faq = () => {
   return (
-    <>
-      <div className="flex justify-center max-w-7xl mx-auto text-3xl md:text-4xl lg:text-5xl mb-4 font-bold items-center" style={{ marginTop: "4rem" }}>
+    <div className="max-w-7xl mx-auto">
+      <div className="flex justify-center text-3xl md:text-4xl lg:text-5xl mb-4 font-bold items-center" style={{ marginTop: "4rem" }}>
         <DecryptedText
         className="text-5xl w-full mx-auto mt-10 mb-4 text-center font-bold"
           text="Frequently Asked Questions"
@@ -110,7 +110,7 @@ const Faq = () => {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-    </>
+    </div>
   );
 };
 

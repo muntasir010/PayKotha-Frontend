@@ -226,7 +226,7 @@ const UserDashboard = () => {
           <CardContent className="pb-0">
             <ChartContainer
               config={chartConfig}
-              className="mx-auto aspect-square max-h-[180px]"
+              className="mx-auto aspect-square max-h-45"
             >
               <RadarChart data={radarData}>
                 <ChartTooltip

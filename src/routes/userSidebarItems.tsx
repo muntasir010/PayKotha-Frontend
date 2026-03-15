@@ -15,7 +15,7 @@ export const userSidebarItems: ISidebarItem[] = [
     items: [
       {     
         title: "Home",
-        url: "/user",
+        url: "/user/dashboard",
         component: UserDashboard
       },
       {

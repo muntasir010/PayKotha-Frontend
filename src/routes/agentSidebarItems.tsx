@@ -17,7 +17,7 @@ export const agentSidebarItems: ISidebarItem[] = [
     items: [
       {
         title: "Home",
-        url: "/agent",
+        url: "/agent/dashboard",
         component: UserDashboard
       },
       {
