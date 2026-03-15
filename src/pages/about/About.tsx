@@ -70,7 +70,7 @@ const defaultAchievements = [
 
 
 const About = ({
-    description = "Pay_Kotha is a fast, secure, and reliable digital wallet platform enabling users to send, receive, and manage money effortlessly.",
+    description = "PayKotha is a fast, secure, and reliable digital wallet platform enabling users to send, receive, and manage money effortlessly.",
   mainImage = {
     src: "https://i.ibb.co.com/C3MTkmkM/18228.jpg",
     alt: "Digital wallet interface",
@@ -91,7 +91,7 @@ const About = ({
   companiesTitle = "",
   companies = defaultCompanies,
   achievementsTitle = "Our Growth in Numbers",
-  achievementsDescription = "Pay_Kotha has rapidly grown to become a leading digital wallet solution, trusted by users globally.",
+  achievementsDescription = "PayKotha has rapidly grown to become a leading digital wallet solution, trusted by users globally.",
   achievements = defaultAchievements,
 }: About3Props = {}) => {
   return (
@@ -102,7 +102,7 @@ const About = ({
           <div className="text-3xl md:text-4xl lg:text-5xl text-primary font-bold">
                   <DecryptedText
                     className="text-2xl md:text-3xl lg:text-5xl text-primary font-bold"
-                    text="About Pay_Kotha"
+                    text="About PayKotha"
                     animateOn="view"
                     speed={150}
                     revealDirection="center"

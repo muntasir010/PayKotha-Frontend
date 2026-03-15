@@ -16,7 +16,14 @@ const contactApi = baseApi.injectEndpoints({
       }),
       providesTags: ["MESSAGES"],
     }),
+    deleteMessage: builder.mutation({
+      query: (id) => ({
+        url: `/contact/delete/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["MESSAGES"],
+    }),
   }),
 });
 
-export const { useSendMessageMutation, useGetAllMessagesQuery } = contactApi;
+export const { useSendMessageMutation, useGetAllMessagesQuery, useDeleteMessageMutation } = contactApi;

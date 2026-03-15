@@ -1,11 +1,14 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Loader2, Mail } from "lucide-react";
+import {  DeleteIcon, Loader2, Mail } from "lucide-react";
 import { format } from "date-fns";
-import { useGetAllMessagesQuery } from "@/redux/features/contact/contactApi";
+import { useDeleteMessageMutation, useGetAllMessagesQuery } from "@/redux/features/contact/contactApi";
+import toast from "react-hot-toast";
 
 const AdminInbox = () => {
   const { data, isLoading } = useGetAllMessagesQuery(undefined);
+  const [deleteMessage] = useDeleteMessageMutation();
   const messages = data?.data || [];
 
   if (isLoading) {
@@ -15,6 +18,18 @@ const AdminInbox = () => {
       </div>
     );
   }
+
+
+const handleDelete = async (id: string) => {
+  if (confirm("Are you sure you want to delete this message?")) {
+    try {
+      await deleteMessage(id).unwrap();
+      toast.success("Message deleted!");
+    } catch (err) {
+      toast.error("Failed to delete message");
+    }
+  }
+};
 
   return (
     <div className="p-6">
@@ -34,6 +49,7 @@ const AdminInbox = () => {
                   <th className="px-6 py-3">Subject</th>
                   <th className="px-6 py-3">Message</th>
                   <th className="px-6 py-3">Date</th>
+                  <th className="px-6 py-3">Delete Message</th>
                 </tr>
               </thead>
               <tbody>
@@ -48,6 +64,11 @@ const AdminInbox = () => {
                       <td className="px-6 py-4 max-w-xs truncate">{msg.message}</td>
                       <td className="px-6 py-4 text-xs text-muted-foreground">
                         {format(new Date(msg.createdAt), "PPP p")}
+                      </td>
+                      <td className="px-6 py-4">
+                        <button onClick={() => handleDelete(msg._id)} className="text-red-500 hover:text-red-700">
+                          <DeleteIcon/>
+                        </button>
                       </td>
                     </tr>
                   ))

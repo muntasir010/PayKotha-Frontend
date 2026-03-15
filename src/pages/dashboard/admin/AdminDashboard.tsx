@@ -101,7 +101,7 @@ const AdminDashboard = () => {
     <div className="absolute inset-0 flex items-center justify-center text-center px-4">
       <DecryptedText
         className="mx-auto font-bold text-xl"
-        text="Welcome to Pay_Kotha"
+        text="Welcome to PayKotha"
         animateOn="view"
         speed={150}
         revealDirection="center"
