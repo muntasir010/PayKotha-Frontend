@@ -50,7 +50,7 @@ export default function Component() {
     <header className="fixed top-0 left-0 w-full z-50 border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
       
       {/* 2. Container for the navigation content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-350 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between gap-3"> 
           
           {/* Left side */}

@@ -16,7 +16,7 @@ export default function HomeCarousel() {
   return (
     <Carousel
       plugins={[plugin.current]}
-      className="mt-16 relative"
+      className="relative"
     >
       <CarouselContent>
         <CarouselItem className="relative p-0">

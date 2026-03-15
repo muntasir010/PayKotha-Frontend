@@ -95,7 +95,7 @@ const About = ({
   achievements = defaultAchievements,
 }: About3Props = {}) => {
   return (
-    <section className="py-10 lg:py-16">
+    <section className="py-10 lg:py-16 max-w-7xl mx-auto">
       <div className="container">
         {/* Intro */}
         <div className="mb-14 grid gap-5 text-center md:grid-cols-2 md:text-left">

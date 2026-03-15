@@ -8,7 +8,9 @@ const RootLayout = () => {
     <>
       <div className=" mb-4 mx-auto">
         <NavBar />
-        <Outlet />
+        <div className="pt-16">
+          <Outlet />
+        </div>
       </div>
       <Toaster
         position="top-right"

@@ -29,7 +29,7 @@ const features = [
 
 const Features = () => {
   return (
-    <section className="py-10 lg:py-16">
+    <section className="py-10 lg:py-16 max-w-7xl mx-auto">
       <div className="container">
         <div className="mb-24 flex flex-col items-center gap-6">
           <div className="flex justify-center text-3xl md:text-4xl lg:text-5xl mb-4 font-bold items-center">
