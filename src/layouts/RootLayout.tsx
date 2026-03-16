@@ -1,3 +1,4 @@
+import AIChatBot from "@/components/AiChatBot";
 import Footer from "@/components/common/Footer";
 import NavBar from "@/components/common/Navbar";
 import { Toaster } from "react-hot-toast";
@@ -24,6 +25,7 @@ const RootLayout = () => {
         }}
       />
       <Footer/>
+      <AIChatBot/>
     </>
   );
 };
