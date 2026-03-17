@@ -1,21 +1,24 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
-  FormMessage,
+  // FormLabel,
+  // FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
+// import { cn } from "@/lib/utils";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import toast from "react-hot-toast";
-import Password from "@/components/ui/Password";
+// import Password from "@/components/ui/Password";
 import { useRegisterMutation } from "@/redux/features/auth/auth";
+import { Card, CardContent } from "@/components/ui/card";
+import { Lock, Mail, User } from "lucide-react";
 
 const registerSchema = z
   .object({
@@ -74,28 +77,37 @@ export function RegisterForm({
   };
 
   return (
-    <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <div className="flex flex-col items-center gap-2 text-center">
-        <h1 className="text-2xl font-bold">Register your account</h1>
-        <p className="text-sm text-muted-foreground">
-          Enter your details to create an account
-        </p>
-      </div>
+    <Card className="w-full max-w-md bg-white/80 dark:bg-white/5 backdrop-blur-2xl border border-gray-200 dark:border-white/10 rounded-3xl shadow-2xl">
+      <CardContent className="p-10 space-y-6">
+        {/* Header */}
+        <div className="text-center space-y-2">
+          <p className="text-sm text-gray-500 dark:text-gray-400">PayKotha</p>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+            Create Account
+          </h1>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            Join us and start managing your money
+          </p>
+        </div>
 
-      <div className="grid gap-6">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             {/* Name */}
             <FormField
               control={form.control}
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter your name" {...field} />
+                    <div className="relative">
+                      <User className="absolute left-4 top-3 w-5 h-5 text-gray-400" />
+                      <Input
+                        placeholder="Full Name"
+                        {...field}
+                        className="pl-12 bg-white dark:bg-transparent border border-gray-300 dark:border-orange-400/40 focus:border-orange-500 rounded-full h-12 text-gray-900 dark:text-white"
+                      />
+                    </div>
                   </FormControl>
-                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -106,52 +118,37 @@ export function RegisterForm({
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input
-                      placeholder="john.doe@company.com"
-                      type="email"
-                      {...field}
-                    />
+                    <div className="relative">
+                      <Mail className="absolute left-4 top-3 w-5 h-5 text-gray-400" />
+                      <Input
+                        placeholder="Email"
+                        {...field}
+                        className="pl-12 bg-white dark:bg-transparent border border-gray-300 dark:border-orange-400/40 focus:border-orange-500 rounded-full h-12 text-gray-900 dark:text-white"
+                      />
+                    </div>
                   </FormControl>
-                  <FormMessage />
                 </FormItem>
               )}
             />
 
-            {/* Phone */}
-            <FormField
-              control={form.control}
-              name="phone"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Phone</FormLabel>
-                  <FormControl>
-                    <Input placeholder="+1234567890" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            {/* role */}
+            {/* Role */}
             <FormField
               control={form.control}
               name="role"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Role</FormLabel>
                   <FormControl>
                     <select
                       value={field.value}
                       onChange={(e) => field.onChange(e.target.value)}
-                      className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                      className="w-full rounded-full h-12 px-4 bg-white dark:bg-transparent border border-gray-300 dark:border-orange-400/40 text-gray-900 dark:text-gray-400 focus:border-orange-600"
                     >
                       <option value="">Select Role</option>
                       <option value="USER">User</option>
                       <option value="AGENT">Agent</option>
                     </select>
                   </FormControl>
-                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -162,11 +159,17 @@ export function RegisterForm({
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Password {...field} />
+                    <div className="relative">
+                      <Lock className="absolute left-4 top-3 w-5 h-5 text-gray-400" />
+                      <Input
+                        type="password"
+                        placeholder="Password"
+                        {...field}
+                        className="pl-12 bg-white dark:bg-transparent border border-gray-300 dark:border-orange-400/40 focus:border-orange-500 rounded-full h-12 text-gray-900 dark:text-white"
+                      />
+                    </div>
                   </FormControl>
-                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -177,28 +180,33 @@ export function RegisterForm({
               name="confirmPassword"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Confirm Password</FormLabel>
                   <FormControl>
-                    <Password {...field} />
+                    <div className="relative">
+                      <Lock className="absolute left-4 top-3 w-5 h-5 text-gray-400" />
+                      <Input
+                        type="password"
+                        placeholder="Confirm Password"
+                        {...field}
+                        className="pl-12 bg-white dark:bg-transparent border border-gray-300 dark:border-orange-400/40 focus:border-orange-500 rounded-full h-12 text-gray-900 dark:text-white"
+                      />
+                    </div>
                   </FormControl>
-                  <FormMessage />
                 </FormItem>
               )}
             />
 
-            <Button type="submit" className="w-full">
-              Submit
+            {/* Submit */}
+            <Button className="w-full h-12 rounded-full bg-gradient-to-r from-orange-400 to-pink-500 text-white font-semibold">
+              Create Account
             </Button>
           </form>
         </Form>
-      </div>
 
-      <div className="text-center text-sm">
-        Already have an account?{" "}
-        <Link to="/login" className="underline underline-offset-4">
-          Login
-        </Link>
-      </div>
-    </div>
+        {/* Footer */}
+        <div className="text-center text-sm text-gray-500 dark:text-gray-400">
+          Already have an account? <Link to="/login" className="text-orange-500 font-semibold hover:underline">Log in</Link>
+        </div>
+      </CardContent>
+    </Card>
   );
 }

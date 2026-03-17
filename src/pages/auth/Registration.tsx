@@ -1,26 +1,19 @@
 import { RegisterForm } from "@/modules/Authentication/RegisterForm";
-import { Link } from "react-router";
 
 export default function Register() {
-  return (
-    <div className="grid lg:grid-cols-2 m-4">
-      <div className="relative hidden bg-muted lg:block">
+ return (
+    <div className="min-h-screen px-0 md:px-8 lg:px-16 grid lg:grid-cols-2 bg-white dark:bg-[#0B0F1A] transition-colors duration-300">
+      {/* LEFT SIDE IMAGE */}
+      <div className="hidden lg:flex items-center justify-center bg-white dark:from-[#0B0F1A] dark:to-[#111827]">
         <img
-          src={"https://i.ibb.co.com/n8Pqmf4r/computer-security-with-login-password-padlock-1.jpg"}
-          alt="Image"
-          className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.8]"
+          src="/src/assets/payment-locker.png"
+          className="w-[70%] object-contain"
         />
       </div>
-      <div className="flex flex-col gap-4">
-        <div className="flex justify-center gap-2 md:justify-start">
-          <Link to="/" className="flex items-center gap-2 font-medium">
-          </Link>
-        </div>
-        <div className="flex flex-1 items-center justify-center">
-          <div className="w-full max-w-xs">
-            <RegisterForm />
-          </div>
-        </div>
+
+      {/* RIGHT SIDE FORM */}
+      <div className="flex items-center justify-center p-6">
+        <RegisterForm />
       </div>
     </div>
   );
