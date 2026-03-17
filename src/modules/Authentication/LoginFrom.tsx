@@ -1,20 +1,17 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
-import { authApi, useLoginMutation } from "@/redux/features/auth/auth";
-import { useAppDispatch } from "@/redux/hook";
-import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
-import toast from "react-hot-toast";
+import { Card, CardContent } from "@/components/ui/card";
+import { Mail, Lock } from "lucide-react";
+import { useForm, type SubmitHandler } from "react-hook-form";
 import { Link, useNavigate } from "react-router";
+import { useAppDispatch } from "@/redux/hook";
+import { authApi, useLoginMutation } from "@/redux/features/auth/auth";
+import toast from "react-hot-toast";
+import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
+
+type LoginFormValues = { email: string; password: string; };
 
 export function LoginForm({
   className,
@@ -22,29 +19,27 @@ export function LoginForm({
 }: React.HTMLAttributes<HTMLDivElement>) {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const form = useForm({
+
+  const form = useForm<LoginFormValues>({
     defaultValues: {
       email: "",
       password: "",
     },
   });
+
   const [login] = useLoginMutation();
 
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+  const onSubmit: SubmitHandler<LoginFormValues> = async (data) => {
     try {
       const res = await login(data).unwrap();
-
       if (res.success) {
         toast.success("Logged in successfully");
         localStorage.setItem("token", res.data.token);
-        // ✅ Force refetch user info so Navbar updates instantly
         dispatch(authApi.util.invalidateTags(["USER"]));
-
         navigate("/");
       }
     } catch (err: any) {
       console.error(err);
-
       if (err?.data?.message === "Password does not match") {
         toast.error("Invalid credentials");
       } else if (err?.data?.message === "User is not verified") {
@@ -61,90 +56,106 @@ export function LoginForm({
   };
 
   return (
-    <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <div className="flex flex-col items-center gap-2 text-center">
-        <h1 className="text-2xl font-bold">Login to your account</h1>
-        <p className="text-balance text-sm text-muted-foreground">
-          Enter your email below to login to your account
-        </p>
-      </div>
-      <div className="grid gap-6">
+    <Card className="w-full max-w-md bg-white/80 dark:bg-white/5 backdrop-blur-2xl border border-gray-200 dark:border-white/10 rounded-3xl shadow-2xl">
+      <CardContent className="p-10 space-y-6">
+        {/* Header */}
+        <div className="text-center space-y-2">
+          <p className="text-sm text-gray-500 dark:text-gray-400">PayKotha</p>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Welcome back</h1>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            Transfer money instantly to anyone,
+            <br /> anywhere in the world
+          </p>
+        </div>
+
+        {/* FORM START */}
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+
+            {/* Email */}
             <FormField
               control={form.control}
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input
-                      placeholder="john@example.com"
-                      {...field}
-                      value={field.value || ""}
-                    />
+                    <div className="relative">
+                      <Mail className="absolute left-4 top-3 w-5 h-5 text-gray-400" />
+                      <Input
+                        placeholder="Email"
+                        {...field}
+                        className="pl-12 bg-white dark:bg-transparent border border-gray-300 dark:border-orange-400/40 focus:border-orange-500 rounded-full h-12 text-gray-900 dark:text-white placeholder:text-gray-400"
+                      />
+                    </div>
                   </FormControl>
-                  <FormMessage />
                 </FormItem>
               )}
             />
 
+            {/* Password */}
             <FormField
               control={form.control}
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input
-                      type="password"
-                      placeholder="********"
-                      {...field}
-                      value={field.value || ""}
-                    />
+                    <div className="relative">
+                      <Lock className="absolute left-4 top-3 w-5 h-5 text-gray-400" />
+                      <Input
+                        type="password"
+                        placeholder="Password"
+                        {...field}
+                        className="pl-12 bg-white dark:bg-transparent border border-gray-300 dark:border-orange-400/40 focus:border-orange-500 rounded-full h-12 text-gray-900 dark:text-white placeholder:text-gray-400"
+                      />
+                    </div>
                   </FormControl>
-                  <FormMessage />
                 </FormItem>
               )}
             />
 
-            <Button type="submit" className="w-full">
-              Login
+            {/* Login Button */}
+            <Button
+              type="submit"
+              className="w-full h-12 rounded-full bg-linear-to-r from-orange-400 to-pink-500 hover:opacity-90 text-white font-semibold"
+            >
+              Login Securely
             </Button>
           </form>
         </Form>
+        {/* FORM END */}
 
-        <div className="flex flex-col gap-2">
-          <Button
-            type="button"
-            variant="outline"
-            onClick={() => handleQuickLogin("naeem@gmail.com", "A@123456")}
-          >
-            Login as User
-          </Button>
-          <Button
-            type="button"
-            variant="outline"
-            onClick={() => handleQuickLogin("muntasir@example.com", "A@123456")}
-          >
-            Login as Agent
-          </Button>
-          <Button
-            type="button"
-            variant="outline"
-            onClick={() => handleQuickLogin("admin@wallet.com", "A@123456")}
-          >
-            Login as Admin
-          </Button>
+        {/* Quick Login */}
+        <div className="text-center space-y-3">
+          <p className="text-sm text-gray-500 dark:text-gray-400">Quick login</p>
+          <div className="flex justify-center gap-3">
+            <Button
+              variant="outline"
+              onClick={() => handleQuickLogin("user@mail.com", "11111111")}
+              className="rounded-full border-gray-300 dark:border-white/20 text-gray-700 dark:text-white"
+            >
+              User
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => handleQuickLogin("agent@mail.com", "11111111")}
+              className="rounded-full border-gray-300 dark:border-white/20 text-gray-700 dark:text-white"
+            >
+              Agent
+            </Button>
+            <Button
+              onClick={() => handleQuickLogin("admin@mail.com", "11111111")}
+              className="rounded-full bg-linear-to-r from-orange-400 to-pink-500 text-white"
+            >
+              Admin
+            </Button>
+          </div>
         </div>
-      </div>
 
-      <div className="text-center text-sm">
-        Don&apos;t have an account?{" "}
-        <Link to="/signup" replace className="underline underline-offset-4">
-          Register
-        </Link>
-      </div>
-    </div>
+        {/* Footer */}
+        <div className="text-center text-xs text-gray-500 dark:text-gray-400">
+          Don’t have an account? <Link to="/signup" className="font-semibold text-orange-400">Register Please</Link>
+        </div>
+      </CardContent>
+    </Card>
   );
 }

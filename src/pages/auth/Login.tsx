@@ -1,27 +1,19 @@
 import { LoginForm } from "@/modules/Authentication/LoginFrom";
-import { Link } from "react-router";
 
 export default function Login() {
   return (
-    <div className="grid min-h-svh lg:grid-cols-2">
-      <div className="flex flex-col gap-4 p-6 md:p-10">
-        <div className="flex justify-center gap-2 md:justify-start">
-          <Link to="/" className="flex items-center gap-2 font-medium"></Link>
-        </div>
-        <div className="flex flex-1 items-center justify-center">
-          <div className="w-full max-w-xs">
-            <LoginForm />
-          </div>
-        </div>
-      </div>
-      <div className="h-3/4 lg:mt-20 lg:overflow-y-hidden hidden bg-muted lg:flex justify-center items-center">
+    <div className="min-h-screen px-2 md:px-10 lg:px-16 grid lg:grid-cols-2 bg-white dark:bg-[#0B0F1A] transition-colors duration-300">
+      {/* LEFT SIDE IMAGE */}
+      <div className="hidden lg:flex items-center justify-center dark:from-[#0B0F1A] dark:to-[#111827]">
         <img
-          src={
-            "https://i.ibb.co.com/BV57RbNS/3d-render-secure-login-password-illustration.jpg"
-          }
-          alt="Image"
-          className="inset-0 h-full w-full object-cover dark:brightness-[0.8]"
+          src="/src/assets/payment-locker.png"
+          className="w-[70%] object-contain"
         />
+      </div>
+
+      {/* RIGHT SIDE FORM */}
+      <div className="flex items-center justify-center p-6">
+        <LoginForm />
       </div>
     </div>
   );
