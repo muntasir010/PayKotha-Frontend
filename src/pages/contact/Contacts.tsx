@@ -17,8 +17,8 @@ interface Contact2Props {
 
 const Contacts = ({
   description = "We are available for questions, feedback, or collaboration opportunities. Let us know how we can help!",
-  phone = "01582369875",
-  email = "muntasirasif324@gmail.com",
+  phone = "+880 1302037958",
+  email = "naeemtasir03@gmail.com",
 }: Contact2Props) => {
   const [sendMessage, { isLoading }] = useSendMessageMutation();
 
@@ -46,14 +46,14 @@ const Contacts = ({
     }
   };
   return (
-    <section className="py-0 lg:py-16 max-w-7xl mx-auto mt-10">
+    <section className="max-w-7xl mt-6 md:mt-10 mx-2 md:mx-4 lg:mx-auto ">
       <div className="">
         <div className="flex flex-col justify-between gap-10 lg:flex-row lg:gap-20">
           <div className="mx-auto flex flex-col justify-between gap-10">
             <div className="text-center lg:text-left">
-              <div className=" text-3xl md:text-4xl lg:text-5xl mb-4 font-bold" style={{ marginTop: "4rem" }}>
+              <div className="mb-4 text-3xl md:text-4xl lg:text-5xl font-bold mt-3 md:mt-10">
                       <DecryptedText
-                      className="text-5xl w-full mx-auto mt-10 mb-4 font-bold"
+                      className="text-5xl w-full mx-auto mt-10 font-bold"
                         text="Reach Us"
                         animateOn="view"
                         speed={150}
@@ -80,7 +80,7 @@ const Contacts = ({
               </ul>
             </div>
           </div>
-            <form onSubmit={handleSubmit} className="mx-auto flex w-full max-w-3xl flex-col gap-6 rounded-lg border p-10">
+            <form onSubmit={handleSubmit} className="mx-auto flex w-full max-w-3xl flex-col gap-6 rounded-lg border p-4 md:p-10">
             <div className="flex gap-4">
               <div className="grid w-full items-center gap-1.5">
                 <Label htmlFor="firstName">First Name</Label>

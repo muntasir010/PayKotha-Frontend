@@ -74,7 +74,7 @@ export function RegisterForm({
 
   return (
     <Card className="w-full max-w-md bg-white/80 dark:bg-white/5 backdrop-blur-2xl border border-gray-200 dark:border-white/10 rounded-3xl shadow-2xl">
-      <CardContent className="px-10 py-6 space-y-4">
+      <CardContent className="px-5 md:px-10 py-5 space-y-4">
         {/* Header */}
         <div className="text-center space-y-2">
           <p className="text-sm text-gray-500 dark:text-gray-400">PayKotha</p>

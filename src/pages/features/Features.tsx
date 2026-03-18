@@ -29,19 +29,19 @@ const features = [
 
 const Features = () => {
   return (
-    <section className="py-10 lg:py-16 max-w-7xl mx-auto">
+    <section className="py-10 lg:pt-16 max-w-7xl mx-2 md:mx-4 lg:mx-auto">
       <div className="container">
-        <div className="mb-24 flex flex-col items-center gap-6">
-          <div className="flex justify-center text-3xl md:text-4xl lg:text-5xl mb-4 font-bold items-center">
+        <div className="mb-10 flex flex-col items-center gap-6">
+          <div className="flex justify-center text-3xl md:text-4xl lg:text-5xl font-bold items-center">
             <DecryptedText
-              className="text-5xl w-full mx-auto mb-4 text-center font-bold"
+              className="text-5xl w-full mx-auto text-center font-bold"
               text="Features of Our Wallet App"
               animateOn="view"
               speed={150}
               revealDirection="center"
             />
           </div>
-          <p className="text-center text-lg font-medium text-muted-foreground md:max-w-4xl lg:text-xl">
+          <p className="text-center text-[16px] md:text-lg font-medium text-muted-foreground md:max-w-4xl lg:text-xl">
             Explore the key features that make managing your finances easy, secure, and fast.
           </p>
         </div>

@@ -6,13 +6,13 @@ export default function Register() {
       {/* LEFT SIDE IMAGE */}
       <div className="hidden lg:flex items-center justify-center dark:from-[#0B0F1A] dark:to-[#111827]">
         <img
-          src="/src/assets/payment-locker.png"
+          src="https://i.ibb.co.com/gbkxR28w/payment-locker.png"
           className="w-[70%] object-contain"
         />
       </div>
 
       {/* RIGHT SIDE FORM */}
-      <div className="flex items-center justify-center p-6">
+      <div className="flex items-center justify-center p-4 md:p-6">
         <RegisterForm />
       </div>
     </div>

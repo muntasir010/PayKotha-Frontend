@@ -95,7 +95,7 @@ const About = ({
   achievements = defaultAchievements,
 }: About3Props = {}) => {
   return (
-    <section className="py-10 lg:py-16 max-w-7xl mx-auto">
+    <section className=" mt-10 md:mt-16 max-w-7xl mx-2 md:mx-4 lg:mx-auto">
       <div className="container">
         {/* Intro */}
         <div className="mb-14 grid gap-5 text-center md:grid-cols-2 md:text-left">
@@ -116,7 +116,7 @@ const About = ({
           <img
             src={mainImage.src}
             alt={mainImage.alt}
-            className="size-full max-h-[620px] rounded-xl object-cover lg:col-span-2"
+            className="size-full max-h-155 rounded-xl object-cover lg:col-span-2"
           />
           <div className="flex flex-col gap-7 md:flex-row lg:flex-col">
             <div className="flex flex-col justify-between gap-6 rounded-xl bg-muted p-7 md:w-1/2 lg:w-auto">
@@ -138,9 +138,9 @@ const About = ({
         </div>
 
         {/* Companies */}
-        <div className="py-32">
+        <div className="">
           <p className="text-center text-primary">{companiesTitle}</p>
-          <div className="mt-8 flex flex-wrap justify-center gap-8">
+          <div className="mt-3 flex flex-wrap justify-center gap-0 lg:gap-8">
             {companies.map((company, idx) => (
               <div className="flex items-center gap-3" key={company.src + idx}>
                 <img

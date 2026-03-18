@@ -57,7 +57,7 @@ export function LoginForm({
 
   return (
     <Card className="w-full max-w-md bg-white/80 dark:bg-white/5 backdrop-blur-2xl border border-gray-200 dark:border-white/10 rounded-3xl shadow-2xl">
-      <CardContent className="p-10 space-y-6">
+      <CardContent className="p-5 md:p-10 space-y-5">
         {/* Header */}
         <div className="text-center space-y-2">
           <p className="text-sm text-gray-500 dark:text-gray-400">PayKotha</p>
