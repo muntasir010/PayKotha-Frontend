@@ -129,7 +129,7 @@ export const adminApi = baseApi.injectEndpoints({
       invalidatesTags: ["WALLET", "TRANSACTIONS"],
     }),
 
-    // ✅ Approve an agent
+    //  Approve an agent
     approveAgent: builder.mutation({
       query: (userId: string) => ({
         url: `/admin/agents/${userId}/approve`,

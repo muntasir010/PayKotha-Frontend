@@ -5,17 +5,13 @@ import {
   FormControl,
   FormField,
   FormItem,
-  // FormLabel,
-  // FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-// import { cn } from "@/lib/utils";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import toast from "react-hot-toast";
-// import Password from "@/components/ui/Password";
 import { useRegisterMutation } from "@/redux/features/auth/auth";
 import { Card, CardContent } from "@/components/ui/card";
 import { Lock, Mail, User } from "lucide-react";
@@ -78,7 +74,7 @@ export function RegisterForm({
 
   return (
     <Card className="w-full max-w-md bg-white/80 dark:bg-white/5 backdrop-blur-2xl border border-gray-200 dark:border-white/10 rounded-3xl shadow-2xl">
-      <CardContent className="p-10 space-y-6">
+      <CardContent className="px-10 py-6 space-y-4">
         {/* Header */}
         <div className="text-center space-y-2">
           <p className="text-sm text-gray-500 dark:text-gray-400">PayKotha</p>
@@ -196,7 +192,7 @@ export function RegisterForm({
             />
 
             {/* Submit */}
-            <Button className="w-full h-12 rounded-full bg-gradient-to-r from-orange-400 to-pink-500 text-white font-semibold">
+            <Button className="w-full h-12 rounded-full bg-linear-to-r from-orange-400 to-pink-500 text-white font-semibold">
               Create Account
             </Button>
           </form>

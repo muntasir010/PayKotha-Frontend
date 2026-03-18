@@ -2,9 +2,14 @@ import AIChatBot from "@/components/AiChatBot";
 import Footer from "@/components/common/Footer";
 import NavBar from "@/components/common/Navbar";
 import { Toaster } from "react-hot-toast";
-import { Outlet } from "react-router";
+import { Outlet, useLocation } from "react-router";
 
 const RootLayout = () => {
+   const location = useLocation();
+
+  const isAuthPage =
+    location.pathname === "/login" ||
+    location.pathname === "/signup";
   return (
     <>
       <div className="mb-4 mx-auto">
@@ -24,7 +29,7 @@ const RootLayout = () => {
           },
         }}
       />
-      <Footer/>
+        {!isAuthPage && <Footer />}
       <AIChatBot/>
     </>
   );

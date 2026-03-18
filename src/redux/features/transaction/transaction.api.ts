@@ -4,7 +4,7 @@ import { baseApi } from "@/redux/baseApi";
 // Extend baseApi for transaction-related queries
 export const transactionApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    // ✅ Get Transaction History
+    //  Get Transaction History
     getTransactionHistory: builder.query({
       query: ({ page = 1, limit = 10, type, startDate, endDate }) => {
         let url = `/transactions/history?page=${page}&limit=${limit}`;
@@ -16,7 +16,7 @@ export const transactionApi = baseApi.injectEndpoints({
       providesTags: ["TRANSACTIONS"],
     }),
 
-    // ✅ Get Commission History
+    //  Get Commission History
     getCommissionHistory: builder.query({
       query: ({ page = 1, limit = 10 }) => ({
         url: `/transactions/commission?page=${page}&limit=${limit}`,

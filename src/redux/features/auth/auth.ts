@@ -14,7 +14,7 @@ export const authApi = baseApi.injectEndpoints({
       async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          // ✅ Update userInfo cache with logged-in user
+          //  Update userInfo cache with logged-in user
           dispatch(
             authApi.util.updateQueryData("userInfo", undefined, () => data.data)
           );
@@ -32,7 +32,7 @@ export const authApi = baseApi.injectEndpoints({
       async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
         try {
           await queryFulfilled;
-          // ✅ Clear frontend token
+          //  Clear frontend token
           localStorage.removeItem("token");
           // Optionally reset any Redux slices
           dispatch(authApi.util.resetApiState());
@@ -62,7 +62,7 @@ export const authApi = baseApi.injectEndpoints({
       providesTags: ["USER"],
     }),
 
-    // ✅ New: Update Profile
+    //  New: Update Profile
     updateProfile: builder.mutation({
       query: (profileData) => ({
         url: "/users/update",

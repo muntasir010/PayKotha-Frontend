@@ -3,7 +3,7 @@ import { baseApi } from "@/redux/baseApi";
 
 export const walletApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    // ✅ Get Wallet
+    //  Get Wallet
     getWallet: builder.query({
       query: () => ({
         url: "/wallet",
@@ -12,7 +12,7 @@ export const walletApi = baseApi.injectEndpoints({
       providesTags: ["WALLET"],
     }),
 
-    // ✅ Add Money
+    //  Add Money
     addMoney: builder.mutation({
       query: (data) => ({
         url: "/wallet/add-money",
@@ -40,7 +40,7 @@ export const walletApi = baseApi.injectEndpoints({
       invalidatesTags: ["TRANSACTIONS"],
     }),
 
-    // ✅ Withdraw
+    //  Withdraw
     withdraw: builder.mutation({
       query: (data) => ({
         url: "/wallet/withdraw",
@@ -68,7 +68,7 @@ export const walletApi = baseApi.injectEndpoints({
       invalidatesTags: ["TRANSACTIONS"],
     }),
 
-    // ✅ Send Money
+    //  Send Money
     sendMoney: builder.mutation({
       query: (data) => ({
         url: "/wallet/send-money",
@@ -96,7 +96,7 @@ export const walletApi = baseApi.injectEndpoints({
       invalidatesTags: ["TRANSACTIONS"],
     }),
 
-    // ✅ Agent Cash In
+    //  Agent Cash In
     cashIn: builder.mutation({
       query: (data) => ({
         url: "/wallet/cash-in",
@@ -124,7 +124,7 @@ export const walletApi = baseApi.injectEndpoints({
       invalidatesTags: ["TRANSACTIONS"],
     }),
 
-    // ✅ Agent Cash Out
+    //  Agent Cash Out
     cashOut: builder.mutation({
   query: ({ userId, amount, description }) => ({
     url: "/wallet/cash-out",

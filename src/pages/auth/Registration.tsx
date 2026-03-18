@@ -2,9 +2,9 @@ import { RegisterForm } from "@/modules/Authentication/RegisterForm";
 
 export default function Register() {
  return (
-    <div className="min-h-screen px-0 md:px-8 lg:px-16 grid lg:grid-cols-2 bg-white dark:bg-[#0B0F1A] transition-colors duration-300">
+    <div className="h-[calc(100vh-80px)] max-w-7xl mx-auto px-0 md:px-8 lg:px-16 grid lg:grid-cols-2 bg-white dark:bg-[#0B0F1A] transition-colors duration-300">
       {/* LEFT SIDE IMAGE */}
-      <div className="hidden lg:flex items-center justify-center bg-white dark:from-[#0B0F1A] dark:to-[#111827]">
+      <div className="hidden lg:flex items-center justify-center dark:from-[#0B0F1A] dark:to-[#111827]">
         <img
           src="/src/assets/payment-locker.png"
           className="w-[70%] object-contain"

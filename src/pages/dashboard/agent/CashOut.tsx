@@ -17,7 +17,7 @@ const CashOut = () => {
 
   const [cashOut, { isLoading, isError, isSuccess }] = useCashOutMutation();
 
-  // ✅ Search users by name (agent route)
+  //  Search users by name (agent route)
   useEffect(() => {
     const fetchSuggestions = async () => {
       if (!recipientName.trim()) {
@@ -82,7 +82,7 @@ const CashOut = () => {
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
-        {/* ✅ Recipient Search */}
+        {/*  Recipient Search */}
         <div className="relative grid w-full max-w-sm items-center gap-3">
           <Label htmlFor="RecipientName">Recipient Name</Label>
           <Input
@@ -113,7 +113,7 @@ const CashOut = () => {
           {searchError && <p className="text-red-600">{searchError}</p>}
         </div>
 
-        {/* ✅ Amount */}
+        {/*  Amount */}
         <div className="grid w-full max-w-sm items-center gap-3">
           <Label htmlFor="Amount">Amount</Label>
           <Input
@@ -126,7 +126,7 @@ const CashOut = () => {
           />
         </div>
 
-        {/* ✅ Description */}
+        {/*  Description */}
         <div className="grid w-full max-w-sm items-center gap-3">
           <Label htmlFor="Description">Description</Label>
           <Input

@@ -5,7 +5,6 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import {
   NavigationMenu,
   NavigationMenuItem,
-  // NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import Logo from "../ui/logo";

@@ -197,19 +197,19 @@ const ViewTransactions = () => {
 
                     <TableCell className={statusColor}>{tx.status}</TableCell>
 
-                    {/* ✅ initiatedBy is a user object */}
+                    {/*  initiatedBy is a user object */}
                     <TableCell>
                       {tx.initiatedBy?.name || tx.initiatedBy?.email || "-"}
                     </TableCell>
 
-                    {/* ✅ fromWallet.userId is a user object */}
+                    {/*  fromWallet.userId is a user object */}
                     <TableCell>
                       {tx.fromWallet?.userId?.name ||
                         tx.fromWallet?.userId?.email ||
                         "-"}
                     </TableCell>
 
-                    {/* ✅ toWallet.userId is a user object */}
+                    {/*  toWallet.userId is a user object */}
                     <TableCell>
                       {tx.toWallet?.userId?.name ||
                         tx.toWallet?.userId?.email ||

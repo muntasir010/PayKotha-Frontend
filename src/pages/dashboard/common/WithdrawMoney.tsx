@@ -71,7 +71,7 @@ const WithdrawMoney = () => {
       <div className="mt-4 text-center">
         {isSuccess && (
           <p className="text-green-600 font-medium">
-            ✅ Money withdrawn successfully!
+             Money withdrawn successfully!
           </p>
         )}
         {isError && (

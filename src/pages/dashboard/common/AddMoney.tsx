@@ -73,7 +73,7 @@ const AddMoney = () => {
 
         {isSuccess && (
           <p className="text-green-600 font-medium">
-            ✅ Money added successfully!
+             Money added successfully!
           </p>
         )}
 
