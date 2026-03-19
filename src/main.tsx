@@ -11,7 +11,7 @@ import { Toaster } from "react-hot-toast";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <div className="">
-      <Toaster position="top-center" reverseOrder={false} />
+      <Toaster position="top-right" reverseOrder={false} />
       <ReduxProvider store={store}>
         <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
           <RouterProvider router={router} />
